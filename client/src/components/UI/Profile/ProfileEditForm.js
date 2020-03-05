@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-import AuthServices from "../../../../services/auth.services"
-import FilesServices from "../../../../services/files.services"
-import UserServices from "../../../../services/user.services"
+import AuthServices from "../../../services/auth.services"
+import FilesServices from "../../../services/files.services"
+import UserServices from "../../../services/user.services"
 
 // import JobExperienceCard from "./JobExperience"
 

@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
-import ProfileEditForm from "./ProfileEditForm/ProfileEditForm"
+import ProfileEditForm from "../../UI/Profile/ProfileEditForm"
 import UserSummary from "../../UI/Profile/ProfileSummary"
 
 import UserServices from "../../../services/user.services"

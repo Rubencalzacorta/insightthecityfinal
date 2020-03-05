@@ -27,37 +27,36 @@ class ProfileSummary extends Component {
     render() {
         console.log(this.props)
 
-        const { ImageUrl, name, lastName, email, description, maps, projects, organizations } = this.props.userDetails
+        const { imageUrl, name, lastName, email, description, maps, projects, organizations } = this.props.userDetails
 
         return (
 
             <>
 
-                {/* {this.props.userDetails ?
+                {this.props.userDetails ?
 
                     <Col md={3}>
 
                         <Card>
-                            <Card.Img variant="top" src={imageUrl} />
+                            <Card.Img variant="top" src={imageUrl ? imageUrl : "http://getdrawings.com/free-icon/user-icon-67.png"} />
                             <Card.Body>
-                                <Card.Title>{name} {lastName}</Card.Title>
+                                <Card.Title>{name ? name : ""} {lastName ? lastName : ""}</Card.Title>
                                 <Card.Text>
-                                    {description}
+                                    {description ? description : ""}
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
                                 <Card.Title>Activity</Card.Title>
                                 <Card.Text>
-                                    maps: {maps.length}
-                                    projects: {projects.length}
-                                    organizations: {organizations.length}
+                                    maps: {maps ? maps.length : "0"} <br />
+                                    projects: {projects ? projects.length : "0"} <br />
+                                    organizations: {organizations ? organizations.length : "0"}
                                 </Card.Text>
                             </Card.Body>
                             <Card.Body>
-                                <Card.Title>Card Title</Card.Title>
+                                <Card.Title>Contact</Card.Title>
                                 <Card.Text>
-                                    Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.
+                                    {email}.
     </Card.Text>
                             </Card.Body>
 
@@ -70,7 +69,7 @@ class ProfileSummary extends Component {
                         </Card>
                     </Col>
 
-                    : <h6>loading</h6>} */}
+                    : <h6>loading</h6>}
             </>
 
         )
