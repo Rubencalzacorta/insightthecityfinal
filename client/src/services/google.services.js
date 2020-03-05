@@ -12,7 +12,7 @@ export default class GoogleServices {
 
     // const endPoint = "/json?location=40.415843,%20-3.703589&radius=1500&keyword=chino&key=AIzaSyA4kSlF_U7Jn2kZLB6bsUaLlnSqt7UJLL4"
 
-    getPlaces = () => this.service.post("/json?location=40.415843,%20-3.703589&radius=1500&keyword=chino&key=AIzaSyA4kSlF_U7Jn2kZLB6bsUaLlnSqt7UJLL4").then(response => console.log(response))
+    getPlaces = () => this.service.get("/json?location=40.415843,%20-3.703589&radius=1500&keyword=chino&key=AIzaSyA4kSlF_U7Jn2kZLB6bsUaLlnSqt7UJLL4").then(response => console.log(response.data))
 
 
 

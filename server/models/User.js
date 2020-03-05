@@ -33,7 +33,13 @@ const userSchema = new Schema({
 
   description: String,
 
-  professionalExperience: String,
+  experienceOverview: String,
+
+  Industry: String,
+  role: String,
+  startDate: Date,
+  endDate: Date,
+  jobDescription: String
 
 }, {
   timestamps: {

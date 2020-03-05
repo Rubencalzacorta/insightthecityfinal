@@ -111,10 +111,33 @@ class ProfileEditForm extends Component {
                             <Form.Control type="text" name="description" value={this.state.description} onChange={this.handleChange} />
                         </Form.Group>
 
+
+
+
                         <Form.Group>
-                            <Form.Label>Tell us about your professional Experience</Form.Label>
-                            <Form.Control type="text" name="professionalExperience" value={this.state.professionalExperience} onChange={this.handleChange} />
+                            <Form.Label>Work experience</Form.Label>
+
+                            <Form.Group>
+                                <Form.Label>Give us a desciption of your job experience</Form.Label>
+                                <Form.Control type="text" name="professionalExperience" value={this.state.professionalExperience} onChange={this.handleChange} />
+                            </Form.Group>
+
+                            <Form.Text className="text-muted">Company</Form.Text>
+                            <Form.Control type="text" name="company" value={this.state.company} onChange={this.handleChange} />
+                            <Form.Text className="text-muted">Role</Form.Text>
+                            <Form.Control type="text" name="role" value={this.state.role} onChange={this.handleChange} />
+                            <Form.Text className="text-muted">Start date</Form.Text>
+                            <Form.Control type="date" name="startDate" value={this.state.startDate} onChange={this.handleChange} />
+                            <Form.Text className="text-muted">End date</Form.Text>
+                            <Form.Control type="date" name="endDate" value={this.state.endDate} onChange={this.handleChange} />
+                            <Form.Text className="text-muted">Description</Form.Text>
+                            <Form.Control type="text" name="jobDescription" value={this.state.jobDescription} onChange={this.handleChange} />
+
+                            <hr />
                         </Form.Group>
+
+
+
 
                         <Button variant="dark" type="submit">Update profile</Button>
                     </Form>
@@ -141,21 +164,21 @@ export default ProfileEditForm
 // {
 //     this.state.workExperience.length > 0 && this.state.workExperience.map((elm, idx) =>
 
-//         <Form.Group>
-//             <Form.Label>Work experience</Form.Label>
-//             <Form.Text className="text-muted">Company</Form.Text>
-//             <Form.Control type="text" name="company" value={elm.company} onChange={this.handleChange} />
-//             <Form.Text className="text-muted">Role</Form.Text>
-//             <Form.Control type="text" name="role" value={elm.role} onChange={this.handleChange} />
-//             <Form.Text className="text-muted">Start date</Form.Text>
-//             <Form.Control type="date" name="startDate" value={elm.startDate} onChange={this.handleChange} />
-//             <Form.Text className="text-muted">End date</Form.Text>
-//             <Form.Control type="date" name="endDate" value={elm.endDate} onChange={this.handleChange} />
-//             <Form.Text className="text-muted">Description</Form.Text>
-//             <Form.Control type="text" name="jobDescription" value={elm.jobDescription} onChange={this.handleChange} />
+        // <Form.Group>
+        //     <Form.Label>Work experience</Form.Label>
+        //     <Form.Text className="text-muted">Company</Form.Text>
+        //     <Form.Control type="text" name="company" value={elm.company} onChange={this.handleChange} />
+        //     <Form.Text className="text-muted">Role</Form.Text>
+        //     <Form.Control type="text" name="role" value={elm.role} onChange={this.handleChange} />
+        //     <Form.Text className="text-muted">Start date</Form.Text>
+        //     <Form.Control type="date" name="startDate" value={elm.startDate} onChange={this.handleChange} />
+        //     <Form.Text className="text-muted">End date</Form.Text>
+        //     <Form.Control type="date" name="endDate" value={elm.endDate} onChange={this.handleChange} />
+        //     <Form.Text className="text-muted">Description</Form.Text>
+        //     <Form.Control type="text" name="jobDescription" value={elm.jobDescription} onChange={this.handleChange} />
 
-//             <hr />
-//         </Form.Group>
+        //     <hr />
+        // </Form.Group>
 
 //     )
 // }
