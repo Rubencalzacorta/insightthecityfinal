@@ -27,7 +27,7 @@ class Profile extends Component {
     getUser = () => {
 
         this.UserServices.getUser(this.props.match.params.id)
-            .then(theUser => this.setState(this.state.user = theUser))
+            .then(theUser => this.setState({ ...this.state, user: theUser }))
             .catch(err => console.log(err))
     }
 
@@ -39,6 +39,7 @@ class Profile extends Component {
 
     render() {
 
+        console.log(this.state)
         return (
 
             <Container>
