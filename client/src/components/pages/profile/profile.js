@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 
 import Container from 'react-bootstrap/Container'
 import Modal from 'react-bootstrap/Modal'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 
 import ProfileEditForm from "./ProfileEditForm/ProfileEditForm"
 import UserSummary from "../../UI/Profile/ProfileSummary"
 
 import UserServices from "../../../services/user.services"
-import Col from 'react-bootstrap/Col'
 
 
 class Profile extends Component {
@@ -41,12 +42,15 @@ class Profile extends Component {
         return (
 
             <Container>
-                <Col>
+                <Row>
+
 
                     <UserSummary userDetails={this.state.user} />
-                    <h1>Hi {this.state.username}, Welcome to your profile</h1>
-                    <button onClick={this.openModal} >Edit profile</button>
 
+                    <Col>
+                        <h1>Hi {this.state.username}, Welcome to your profile</h1>
+                        <button onClick={this.openModal} >Edit profile</button>
+                    </Col>
 
                     <Modal show={this.state.showModal} onHide={this.closeModal}>
                         <Modal.Body>
@@ -61,7 +65,8 @@ class Profile extends Component {
 
                     {/* {this.props.loggedInUser ? <ProfileEditForm closeModal={this.closeModal} loggedInUser={this.props.loggedInUser} /> : <h1>cargando</h1>} */}
 
-                </Col>
+
+                </Row>
 
             </Container>
         )

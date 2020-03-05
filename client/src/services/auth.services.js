@@ -6,6 +6,9 @@ class authServices {
             baseURL: `${process.env.REACT_APP_URL}/auth`,
             withCredentials: true
         })
+
+        console.log("CONSTRUCTOR")
+        console.log(`${process.env.REACT_APP_URL}/auth`)
     }
 
     signup = ({ username, password }) => this.service.post("/signup", { username, password }).then(response => response.data)
