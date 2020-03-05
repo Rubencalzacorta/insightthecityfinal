@@ -1,20 +1,21 @@
 
 import React, { Component } from 'react'
 
-// import Container from 'react-bootstrap/Container'
+import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
+import ListGroup from 'react-bootstrap/ListGroup'
 // import Row from 'react-bootstrap/Row'
 // import Modal from 'react-bootstrap/Modal'
 
 import GoogleServices from "../../../services/google.services"
 
 
-class MapFilterBar extends Component {
+class ProfileSummary extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            filters: {},
+            user: {},
 
         }
         this.GoogleServices = new GoogleServices()
@@ -34,10 +35,25 @@ class MapFilterBar extends Component {
             <>
                 <Col>
 
-                    <figure>
-
-                    </figure>
-
+                    {/* <Card style={{ width: '18rem' }}>
+                        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+                        <Card.Body>
+                            <Card.Title>Card Title</Card.Title>
+                            <Card.Text>
+                                Some quick example text to build on the card title and make up the bulk of
+                                the card's content.
+    </Card.Text>
+                        </Card.Body>
+                        <ListGroup className="list-group-flush">
+                            <ListGroupItem>Cras justo odio</ListGroupItem>
+                            <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
+                            <ListGroupItem>Vestibulum at eros</ListGroupItem>
+                        </ListGroup>
+                        <Card.Body>
+                            <Card.Link href="#">Card Link</Card.Link>
+                            <Card.Link href="#">Another Link</Card.Link>
+                        </Card.Body>
+                    </Card> */}
                 </Col>
             </>
 
@@ -45,4 +61,4 @@ class MapFilterBar extends Component {
     }
 }
 
-export default MapFilterBar
+export default ProfileSummary

@@ -4,8 +4,10 @@ import Container from 'react-bootstrap/Container'
 import Modal from 'react-bootstrap/Modal'
 
 import ProfileEditForm from "./ProfileEditForm/ProfileEditForm"
+import UserSummary from "../../UI/Profile/ProfileSummary"
 
 import UserServices from "../../../services/user.services"
+import Col from 'react-bootstrap/Col'
 
 
 class Profile extends Component {
@@ -39,24 +41,28 @@ class Profile extends Component {
         return (
 
             <Container>
+                <Col>
+
+                    <UserSummary userDetails={this.state.user} />
+                    <h1>Hi {this.state.username}, Welcome to your profile</h1>
+                    <button onClick={this.openModal} >Edit profile</button>
 
 
-                <h1>Hi {this.state.username}, Welcome to your profile</h1>
-                <button onClick={this.openModal} >Edit profile</button>
-
-
-                <Modal show={this.state.showModal} onHide={this.closeModal}>
-                    <Modal.Body>
-                        <h3>Edit Your profile</h3>
-                        <hr></hr>
-                        <ProfileEditForm closeModal={this.closeModal} loggedInUser={this.props.loggedInUser} />
-                    </Modal.Body>
-                </Modal>
+                    <Modal show={this.state.showModal} onHide={this.closeModal}>
+                        <Modal.Body>
+                            <h3>Edit Your profile</h3>
+                            <hr></hr>
+                            <ProfileEditForm closeModal={this.closeModal} loggedInUser={this.props.loggedInUser} />
+                        </Modal.Body>
+                    </Modal>
 
 
 
 
-                {/* {this.props.loggedInUser ? <ProfileEditForm closeModal={this.closeModal} loggedInUser={this.props.loggedInUser} /> : <h1>cargando</h1>} */}
+                    {/* {this.props.loggedInUser ? <ProfileEditForm closeModal={this.closeModal} loggedInUser={this.props.loggedInUser} /> : <h1>cargando</h1>} */}
+
+                </Col>
+
             </Container>
         )
     }
