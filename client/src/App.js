@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 
 import { Switch, Route, Redirect } from 'react-router-dom'
 // , Redirect 
@@ -56,7 +55,7 @@ class App extends Component {
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
           <Route path="/signup" render={props => <Signup setTheUser={this.setTheUser} {...props} />} />
           <Route path="/profile/:id" render={props => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} setTheUser={this.setTheUser} {...props} /> : <Redirect to="/login"></Redirect>} />
-          <Route path="/maps/create" render={props => <MapPage setTheUser={this.setTheUser} {...props} />} />
+          <Route path="/maps/create" render={props => <MapPage loggedInUser={this.state.loggedInUser} {...props} />} />
           {/* <Route path="/maps/create" render={props => this.state.loggedInUser ? <Map loggedInUser={this.state.loggedInUser} setTheUser={this.setTheUser} {...props} /> : <Redirect to="/login"></Redirect>} /> */}
         </Switch>
       </>

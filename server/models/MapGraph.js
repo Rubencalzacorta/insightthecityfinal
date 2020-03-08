@@ -2,25 +2,23 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const mapSchema = new Schema({
-    username: String,
-    password: String,
-    image: String,
     creator: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
 
-    notes: {
+    notes: [{
         type: Schema.Types.ObjectId,
         ref: 'Note'
-    },
-
-    filters: [{
-        demografic: String,
-        googleKWords: [String],
-        zoom: String,
-        center: String,
     }],
+
+
+    demografic: String,
+    googleKWords: String,
+    lng: Number,
+    lat: Number,
+    zoom: Number
+
 
 }, {
     timestamps: {

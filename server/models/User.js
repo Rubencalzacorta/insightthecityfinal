@@ -3,8 +3,11 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   username: String,
+
   password: String,
+
   imageURL: String,
+
   maps: [{
     type: Schema.Types.ObjectId,
     ref: 'Map'
@@ -35,10 +38,14 @@ const userSchema = new Schema({
 
   experienceOverview: String,
 
-  Industry: String,
+  company: String,
+
   role: String,
+
   startDate: Date,
+
   endDate: Date,
+
   jobDescription: String
 
 }, {

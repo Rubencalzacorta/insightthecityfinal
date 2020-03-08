@@ -20,10 +20,10 @@ require("./configs/cors.configs")(app)
 
 
 //routes
-app.use('/', require('./routes/index.routes'));
 app.use('/api/profile', require('./routes/profile.routes.js'));
 app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/files', require('./routes/files.routes.js'))
+app.use('/api/maps', require('./routes/maps.routes.js'))
 
 
 

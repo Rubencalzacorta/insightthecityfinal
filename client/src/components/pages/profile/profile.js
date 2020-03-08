@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row'
 
 import ProfileEditForm from "../../UI/Profile/ProfileEditForm"
 import UserSummary from "../../UI/Profile/ProfileSummary"
+import JobExperienceSection from "../../UI/Profile/JobExperienceSection"
 
 import UserServices from "../../../services/user.services"
 
@@ -48,9 +49,12 @@ class Profile extends Component {
 
                     <UserSummary userDetails={this.state.user} />
 
-                    <Col>
+                    <Col md={9}>
                         <h1>Hi {this.state.username}, Welcome to your profile</h1>
                         <button onClick={this.openModal} >Edit profile</button>
+
+                        <JobExperienceSection userDetails={this.state.user} />
+
                     </Col>
 
                     <Modal show={this.state.showModal} onHide={this.closeModal}>

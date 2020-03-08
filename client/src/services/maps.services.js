@@ -1,18 +1,16 @@
 import axios from "axios"
 
-class authServices {
+class mapServices {
     constructor() {
         this.service = axios.create({
-            baseURL: `${process.env.REACT_APP_URL}/profile`,
+            baseURL: `${process.env.REACT_APP_URL}/maps`,
             withCredentials: true
         })
     }
 
-    getUser = (id) => this.service.get(`/${id}`).then(response => response.data)
+    postMap = (map) => this.service.post("/create", map).then(response => response.data)
 
-    postUser = user => this.service.post("/update", user).then(response => response.data)
-
-    addMap = map => this.service.post("/updatemap", map).then(response => response.data)
+    // getUser = (id) => this.service.get(`/${id}`).then(response => response.data)
 
 
     // login = ({ username, password }) => this.service.post("/login", { username, password })
@@ -21,4 +19,4 @@ class authServices {
 
 }
 
-export default authServices 
+export default mapServices 

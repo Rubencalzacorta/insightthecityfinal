@@ -6,42 +6,65 @@ import React, { Component } from 'react'
 
 
 // import Container from 'react-bootstrap/Container'
-// import Col from 'react-bootstrap/Col'
+import Col from 'react-bootstrap/Col'
 // import Row from 'react-bootstrap/Row'
 // import Modal from 'react-bootstrap/Modal'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 import GoogleServices from "../../../services/google.services"
 
 
 class MapFilterBar extends Component {
 
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
-            filters: {},
+            demografic: "",
+            googleKWords: "",
 
         }
         this.GoogleServices = new GoogleServices()
 
     }
 
-    getPlaces = () => {
+    getPlaces = (keywords) => {
         console.log("llega a la barra")
-        this.GoogleServices.getPlaces()
+        this.GoogleServices.getPlaces(keywords)
     }
 
-    render() {
+    searchPlaces = () => this.getPlaces(this.state.googleKWords)
 
+    sendFilters = () => this.props.postFilters(this.state)
+
+    handleChange = e => {
+        let { name, value } = e.target
+        this.setState({ ...this.state, [name]: value })
+        this.sendFilters()
+    }
+
+
+
+
+    render() {
 
         return (
 
             <>
-                <h1>Buscador</h1>
-                <form>
-                    <input></input>
-                    <button type="button" onClick={this.getPlaces} >Busca Lugares</button>
+                <Col md={3}>
+                    <h1> Filters</h1>
 
-                </form>
+                    <Form id="profile-edit-form" onSubmit={this.handleSubmit}>
+
+                        <Form.Group>
+                            <Form.Label>search</Form.Label>
+                            <Form.Control type="text" name="googleKWords" onChange={this.handleChange} onClick={this.searchPlaces} placeholder="search for keywords" />
+                        </Form.Group>
+
+                        <Button variant="dark" type="button">Search</Button>
+                    </Form>
+
+                </Col>
             </>
         )
     }
