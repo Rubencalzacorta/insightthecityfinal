@@ -24,6 +24,8 @@ app.use('/api/profile', require('./routes/profile.routes.js'));
 app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/files', require('./routes/files.routes.js'))
 app.use('/api/maps', require('./routes/maps.routes.js'))
+app.use('/api/notes', require('./routes/notes.routes.js'))
+app.use('/api/projects', require('./routes/projects.routes.js'))
 
 
 

@@ -24,14 +24,24 @@ class Map extends Component {
         super(props)
 
         this.state = {
-            lng: -3.70,
-            lat: 40.4115,
-            zoom: 11
+            lng: this.props.state ? this.props.state.lng : -3.70,
+            lat: this.props.state ? this.props.state.lat : 40.4115,
+            zoom: this.props.state ? this.props.state.zoom : 11
 
         }
         this.UserServices = new UserServices()
 
     }
+
+    // initialState = () => {
+    //     console.log("initializeState")
+    //     console.log(this.props.state)
+    //     this.setState({
+    //         lng: this.props.state.lng,
+    //         lat: this.props.state.lat,
+    //         zoom: this.props.state.zoom,
+    //     })
+    // }
 
 
 
@@ -40,49 +50,97 @@ class Map extends Component {
 
     componentDidMount() {
 
-        let map = new mapboxgl.Map({
-            container: this.mapContainer,
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [this.state.lng, this.state.lat],
-            zoom: this.state.zoom
-        })
+        // this.props.state && this.initialState()
 
-
-        map.on('move', () => {
-            this.setState({
-                ...this.state,
-                lng: map.getCenter().lng.toFixed(4),
-                lat: map.getCenter().lat.toFixed(4),
-                zoom: map.getZoom().toFixed(2)
-
-
+        if (this.props.state) {
+            let map = new mapboxgl.Map({
+                container: this.mapContainer,
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [this.props.state.lng, this.props.state.lat],
+                zoom: this.props.state.zoom
             })
 
-            this.sendFilters()
-        })
+            map.on('move', () => {
+                this.setState({
+                    ...this.state,
+                    lng: map.getCenter().lng.toFixed(4),
+                    lat: map.getCenter().lat.toFixed(4),
+                    zoom: map.getZoom().toFixed(2)
 
-        map.on('load', () => {
-            map.addSource('madridVectors', {
-                type: 'geojson',
-                data
+                })
+
+                this.sendFilters()
+            })
+
+            map.on('load', () => {
+                map.addSource('madridVectors', {
+                    type: 'geojson',
+                    data
+                });
+
+                map.addLayer({
+                    id: 'madridVectors',
+                    type: 'line',
+                    source: 'madridVectors',
+                    paint: {
+                        'line-color': '#877b59',
+                        'line-width': 1
+                    }
+                }); // ID metches `mapbox/streets-v9`
+
             });
 
-            map.addLayer({
-                id: 'madridVectors',
-                type: 'line',
-                source: 'madridVectors',
-                paint: {
-                    'line-color': '#877b59',
-                    'line-width': 1
-                }
-            }); // ID metches `mapbox/streets-v9`
+        } else {
 
-        });
+            let map = new mapboxgl.Map({
+                container: this.mapContainer,
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [this.state.lng, this.state.lat],
+                zoom: this.state.zoom
+            })
+
+
+            map.on('move', () => {
+                this.setState({
+                    ...this.state,
+                    lng: map.getCenter().lng.toFixed(4),
+                    lat: map.getCenter().lat.toFixed(4),
+                    zoom: map.getZoom().toFixed(2)
+
+                })
+
+                this.sendFilters()
+            })
+
+            map.on('load', () => {
+                map.addSource('madridVectors', {
+                    type: 'geojson',
+                    data
+                });
+
+                map.addLayer({
+                    id: 'madridVectors',
+                    type: 'line',
+                    source: 'madridVectors',
+                    paint: {
+                        'line-color': '#877b59',
+                        'line-width': 1
+                    }
+                }); // ID metches `mapbox/streets-v9`
+
+            });
+
+
+
+        }
+
+
+
+
     }
 
 
     render() {
-
 
         return (
 

@@ -13,12 +13,12 @@ import MapList from "../../UI/Profile/MapsList"
 import UserServices from "../../../services/user.services"
 
 
-class Profile extends Component {
+class Project extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            user: {},
+            project: {},
             showModal: false
         }
         this.UserServices = new UserServices()
@@ -26,12 +26,17 @@ class Profile extends Component {
 
     componentDidMount = () => this.getUser()
 
-    getUser = () => {
+    createProject = name => this.ProjectServices.createProject(name).then(project => console.log(project))
 
-        this.UserServices.getUser(this.props.match.params.id)
+
+    getProject = (id) => {
+
+        this.ProjectServices.getUser(id)
             .then(theUser => this.setState({ ...this.state, user: theUser }))
             .catch(err => console.log(err))
     }
+
+
 
 
     closeModal = () => this.setState({ showModal: false })
@@ -57,17 +62,14 @@ class Profile extends Component {
 
                         <MapList list={this.state.user.maps} />
 
-
-
-
                     </Col>
 
 
                     <Modal show={this.state.showModal} onHide={this.closeModal}>
                         <Modal.Body>
-                            <h3>Edit Your profile</h3>
+                            <h3>Create a new project</h3>
                             <hr></hr>
-                            <ProfileEditForm closeModal={this.closeModal} loggedInUser={this.props.loggedInUser} />
+                            <NewProjectForm closeModal={this.closeModal} getProject={this.getProject} loggedInUser={this.props.loggedInUser} />
                         </Modal.Body>
                     </Modal>
 
@@ -86,4 +88,4 @@ class Profile extends Component {
     }
 }
 
-export default Profile
+export default Project

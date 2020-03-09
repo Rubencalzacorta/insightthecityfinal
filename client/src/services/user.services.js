@@ -12,7 +12,7 @@ class authServices {
 
     postUser = user => this.service.post("/update", user).then(response => response.data)
 
-    addMap = map => this.service.post("/updatemap", map).then(response => response.data)
+    addMap = map => this.service.post("/addmap", map).then(response => response.data)
 
 
     // login = ({ username, password }) => this.service.post("/login", { username, password })

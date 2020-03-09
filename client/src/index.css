@@ -1,3 +1,7 @@
 body{
   background-color:whitesmoke;
 }
+
+.map-table-item{
+  display: block;
+}

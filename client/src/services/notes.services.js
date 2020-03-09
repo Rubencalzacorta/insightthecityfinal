@@ -3,20 +3,14 @@ import axios from "axios"
 class mapServices {
     constructor() {
         this.service = axios.create({
-            baseURL: `${process.env.REACT_APP_URL}/maps`,
+            baseURL: `${process.env.REACT_APP_URL}/notes`,
             withCredentials: true
         })
     }
 
-    postMap = (map) => this.service.post("/create", map).then(response => response.data)
+    postNote = note => this.service.post("/create", note).then(response => console.log(response.data))
 
     // getMap = mapId => this.service.post("/getmap", mapId).then(response => response.data)
-
-    getMap = mapId => this.service.get(`/getmap/${mapId}`).then(response => response.data)
-
-    updateMap = (mapId, map) => this.service.post(`/getmap/${mapId}`, map).then(response => response.data)
-
-    // addNotes = noteId => this.service.post("/addnote", noteId).then(response => response.data)
 
     // this.service.get("/getmap", mapId).then(response => response.data)
 
@@ -30,4 +24,4 @@ class mapServices {
 
 }
 
-export default mapServices
+export default mapServices 

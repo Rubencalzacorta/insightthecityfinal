@@ -22,7 +22,7 @@ class ProfileSummary extends Component {
 
 
     render() {
-        console.log(this.props)
+
 
         const { imageUrl, name, lastName, email, description, maps, projects, organizations } = this.props.userDetails
 

@@ -4,6 +4,7 @@ import mapboxgl from 'mapbox-gl';
 
 import Map from "../../UI/maps/Map"
 import MapFilterBar from "../../UI/FilterBar/FilterBar"
+import NotesBar from "../../UI/Notes/NotesBar"
 
 
 import Container from 'react-bootstrap/Container'
@@ -71,6 +72,8 @@ class MapPage extends Component {
                         <MapFilterBar postFilters={this.postFilters} />
 
                         <Map postFilters={this.postFilters} />
+
+                        <NotesBar loggedInUser={this.props.loggedInUser} />
 
                     </Row>
 

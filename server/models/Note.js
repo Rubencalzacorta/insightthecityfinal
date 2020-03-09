@@ -8,10 +8,10 @@ const noteSchema = new Schema({
         ref: 'User'
     },
 
-    publication: {
-        type: Schema.Types.ObjectId,
-        ref: 'Note'
-    },
+    // map: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Note'
+    // },
 
     text: String,
 

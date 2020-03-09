@@ -10,7 +10,7 @@ const userSchema = new Schema({
 
   maps: [{
     type: Schema.Types.ObjectId,
-    ref: 'Map'
+    ref: 'MapGraph'
   }],
 
   projects: [{

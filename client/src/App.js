@@ -12,6 +12,8 @@ import Signup from "./components/pages/auth/signup/signup"
 import Profile from "./components/pages/profile/profile"
 import Navigation from "./components/UI/NavBar/NavBar"
 import MapPage from "./components/pages/Maps/MapPage"
+import MapPageId from "./components/pages/Maps/MapPageId"
+import NewProjectForm from "./components/UI/Projects/NewProjectForm"
 
 
 
@@ -56,6 +58,13 @@ class App extends Component {
           <Route path="/signup" render={props => <Signup setTheUser={this.setTheUser} {...props} />} />
           <Route path="/profile/:id" render={props => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} setTheUser={this.setTheUser} {...props} /> : <Redirect to="/login"></Redirect>} />
           <Route path="/maps/create" render={props => <MapPage loggedInUser={this.state.loggedInUser} {...props} />} />
+          <Route path="/maps/:id" render={props => <MapPageId loggedInUser={this.state.loggedInUser} {...props} />} />
+          <Route path="/projects/create" render={props => this.state.loggedInUser ? <NewProjectForm loggedInUser={this.state.loggedInUser} {...props} /> : <Redirect to="/login"></Redirect>} />
+
+
+
+
+          {/* <Route path="/project/create" render={props => <MapPagexId loggedInUser={this.state.loggedInUser} {...props} />} /> */}
           {/* <Route path="/maps/create" render={props => this.state.loggedInUser ? <Map loggedInUser={this.state.loggedInUser} setTheUser={this.setTheUser} {...props} /> : <Redirect to="/login"></Redirect>} /> */}
         </Switch>
       </>

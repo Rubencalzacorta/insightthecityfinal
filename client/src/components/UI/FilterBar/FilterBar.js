@@ -4,7 +4,6 @@ import React, { Component } from 'react'
 
 // import mapboxgl from 'mapbox-gl';
 
-
 // import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 // import Row from 'react-bootstrap/Row'
@@ -15,10 +14,11 @@ import Button from 'react-bootstrap/Button'
 import GoogleServices from "../../../services/google.services"
 
 
+
 class MapFilterBar extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             demografic: "",
             googleKWords: "",
@@ -27,6 +27,24 @@ class MapFilterBar extends Component {
         this.GoogleServices = new GoogleServices()
 
     }
+
+
+    componentDidMount = () => this.initialState()
+
+    initialState = () => {
+
+        this.props.state &&
+
+            this.setState({
+
+                demografic: this.props.state.demografic,
+                googleKWords: this.props.state.googleKWords,
+
+            })
+
+    }
+
+
 
     getPlaces = (keywords) => {
         console.log("llega a la barra")
@@ -44,8 +62,6 @@ class MapFilterBar extends Component {
     }
 
 
-
-
     render() {
 
         return (
@@ -54,14 +70,14 @@ class MapFilterBar extends Component {
                 <Col md={3}>
                     <h1> Filters</h1>
 
-                    <Form id="profile-edit-form" onSubmit={this.handleSubmit}>
+                    <Form id="profile-edit-form">
 
                         <Form.Group>
                             <Form.Label>search</Form.Label>
-                            <Form.Control type="text" name="googleKWords" onChange={this.handleChange} onClick={this.searchPlaces} placeholder="search for keywords" />
+                            <Form.Control type="text" name="googleKWords" onChange={this.handleChange} placeholder="search for keywords" />
                         </Form.Group>
 
-                        <Button variant="dark" type="button">Search</Button>
+                        <Button variant="dark" type="button" onClick={this.searchPlaces} >Search</Button>
                     </Form>
 
                 </Col>

@@ -46,6 +46,7 @@ class Navigation extends Component {
                                 <Nav.Link as="div"> <Link to="/">Home</Link></Nav.Link>
                                 <Nav.Link as="div"> <Link to={`/profile/${this.props.loggedInUser._id}`}>Profile</Link></Nav.Link>
                                 <Nav.Link as="div"> <Link to="/maps/create"> Create Map </Link></Nav.Link>
+                                <Nav.Link as="div"> <Link to="/projects/create"> Create Projects </Link></Nav.Link>
 
                                 <Nav.Link onClick={this.logout}>Logout</Nav.Link>
                                 <Nav.Link as="small">{greeting}</Nav.Link>

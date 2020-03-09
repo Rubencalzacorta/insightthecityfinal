@@ -16,10 +16,10 @@ const Note = require("../models/Note");
 router.post("/create", (req, res, next) => {
 
 
-    MapGraph.create({ ...req.body })
-        .then(newMap => {
-            console.log(newMap)
-            res.status(200).json(newMap)
+    Note.create({ ...req.body })
+        .then(newNote => {
+            console.log(newNote)
+            res.status(200).json(newNote)
         })
         .catch(err => console.log("error retrieving the user data", err))
 })
@@ -36,47 +36,6 @@ router.post("/create", (req, res, next) => {
 
 
 // })
-
-router.get("/getmap/:id", (req, res, next) => {
-
-
-    MapGraph.findById(req.params.id)
-        // .populate("notes")
-        .populate("creator")
-        .then(foundMap => {
-            // console.log(foundMap)
-            res.status(200).json(foundMap)
-        })
-        .catch(err => console.log("------------------------error buscando el mapa", err))
-
-})
-
-router.post("/getmap/:id", (req, res, next) => {
-
-    const { demografic, googleKWords, lng, lat, zoom } = req.body
-
-    MapGraph.findByIdAndUpdate(req.params.id, { demografic, googleKWords, lng, lat, zoom })
-
-        .then(foundMap => {
-            // console.log(foundMap)
-            res.status(200).json(foundMap)
-        })
-        .catch(err => console.log("------------------------error buscando el mapa", err))
-
-})
-
-// router.post("/addnote", (req, res, next) => {
-
-//     MapGraph.findByIdAndUpdate(req.body.creator, { $push: { maps: req.body._id } })
-//         .then(updatedUser => res.status(200).json(updatedUser))
-//         .catch(err => console.log("error retrieving the user data", err))
-// })
-//     .catch(err => console.log("error buscando el mapa", err))
-
-
-// })
-
-
 
 // router.get("/getusermaps", (req, res, next) => {
 
