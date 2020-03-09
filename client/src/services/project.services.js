@@ -10,6 +10,8 @@ class ProjectServices {
 
     createProject = (project) => this.service.post("/create", project).then(response => response.data)
 
+    getProject = (id) => this.service.get(`/${id}`).then(response => response.data)
+
     // getMap = mapId => this.service.post("/getmap", mapId).then(response => response.data)
 
     // this.service.get("/getmap", mapId).then(response => response.data)

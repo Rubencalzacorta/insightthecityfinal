@@ -13,17 +13,25 @@ const Publication = require("../models/Publication");
 // })
 
 
-
 router.post("/create", (req, res, next) => {
 
 
     Publication.create({ ...req.body })
-        .then(newPublication => {
-            console.log(newPublication)
-            res.status(200).json(newPublication)
-        })
-        .catch(err => console.log("error retrieving the user data", err))
+        .then(newPublication => res.status(200).json(newPublication))
+        .catch(err => console.log("error creating project data", err))
 })
+
+router.get("/:id", (req, res, next) => {
+
+    Publication.findById(req.params.id)
+        .populate("creator")
+        .populate("image")
+        .populate("team")
+        .populate("comments")
+        .then(thePublication => res.status(200).json(thePublication))
+        .catch(err => console.log("error retrieving the project data", err))
+})
+
 
 
 // router.post("/getmap", (req, res, next) => {

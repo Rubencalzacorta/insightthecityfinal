@@ -41,6 +41,9 @@ class ProfileEditForm extends Component {
 
         this.ProjectServices.createProject(this.state.project)
             .then(project => {
+                // console.log("adding the project")
+                // this.UserServices.addProject(this.state.creator, project._id)
+                //     .then(user => console.log(user))
                 this.finishAction(project._id)
             })
             .catch(err => console.log(err))

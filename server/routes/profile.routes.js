@@ -30,4 +30,11 @@ router.post("/addmap", (req, res, next) => {
         .catch(err => console.log("error retrieving the user data", err))
 })
 
+router.post("/addproject", (req, res, next) => {
+    console.log("este es el req bosy", req.body)
+    User.findByIdAndUpdate(req.body.creator, { $push: { maps: req.body._id } })
+        .then(updatedUser => res.status(200).json(updatedUser))
+        .catch(err => console.log("error retrieving the user data", err))
+})
+
 module.exports = router;

@@ -14,6 +14,8 @@ class authServices {
 
     addMap = map => this.service.post("/addmap", map).then(response => response.data)
 
+    addProject = (id) => this.service.post("/addproject", { id }).then(response => response.data)
+
 
     // login = ({ username, password }) => this.service.post("/login", { username, password })
     // logout = () => this.service.post('/logout').then(response => response.data)

@@ -50,7 +50,6 @@ class MapPageId extends Component {
 
         this.MapServices.getMap(this.props.match.params.id)
             .then(theMap => {
-
                 this.setState({ ...theMap, creator: theMap.creator._id, updated: true })
             })
             .catch(err => console.log("error montando el estado", err))

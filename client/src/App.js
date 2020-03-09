@@ -14,6 +14,7 @@ import Navigation from "./components/UI/NavBar/NavBar"
 import MapPage from "./components/pages/Maps/MapPage"
 import MapPageId from "./components/pages/Maps/MapPageId"
 import NewProjectForm from "./components/UI/Projects/NewProjectForm"
+import Project from "./components/pages/Projects/Project"
 
 
 
@@ -60,6 +61,7 @@ class App extends Component {
           <Route path="/maps/create" render={props => <MapPage loggedInUser={this.state.loggedInUser} {...props} />} />
           <Route path="/maps/:id" render={props => <MapPageId loggedInUser={this.state.loggedInUser} {...props} />} />
           <Route path="/projects/create" render={props => this.state.loggedInUser ? <NewProjectForm loggedInUser={this.state.loggedInUser} {...props} /> : <Redirect to="/login"></Redirect>} />
+          <Route path="/projects/:id" render={props => this.state.loggedInUser ? <Project loggedInUser={this.state.loggedInUser} {...props} /> : <Redirect to="/login"></Redirect>} />
 
 
 
