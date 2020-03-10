@@ -14,22 +14,35 @@ const Publication = require("../models/Publication");
 
 
 router.post("/create", (req, res, next) => {
-
-
     Publication.create({ ...req.body })
         .then(newPublication => res.status(200).json(newPublication))
         .catch(err => console.log("error creating project data", err))
 })
 
 router.get("/:id", (req, res, next) => {
-
     Publication.findById(req.params.id)
         .populate("creator")
-        .populate("image")
-        .populate("team")
-        .populate("comments")
         .then(thePublication => res.status(200).json(thePublication))
         .catch(err => console.log("error retrieving the project data", err))
+})
+
+router.post("/addTeamMember", (req, res, next) => {
+
+    console.log(req.body)
+
+    const newTeamMember = {
+        $push: {
+            team: req.body.memberId
+        }
+    }
+
+    Publication.findByIdAndUpdate(req.body.projectId, newTeamMember, { new: true })
+        .then(updatedProject => {
+            console.log(updatedProject)
+            res.status(200).json(updatedProject)
+        })
+        .catch(err => console.log("error retrieving the user data", err))
+
 })
 
 

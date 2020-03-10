@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
 // , Redirect 
 
+// import Vectors from "./components/UI/maps/mergingFile"
+
 
 import AuthServices from "./services/auth.services"
 

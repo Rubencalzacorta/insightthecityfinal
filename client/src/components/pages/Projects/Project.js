@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row'
 import UserSummary from "../../UI/Profile/ProfileSummary"
 import JobExperienceSection from "../../UI/Profile/JobExperienceSection"
 import MapList from "../../UI/Profile/MapsList"
+import ProjectInfoBox from "../../UI/Projects/ProjectInfoBox"
 
 import UserServices from "../../../services/user.services"
 import ProjectServices from "../../../services/project.services"
@@ -29,14 +30,12 @@ class Project extends Component {
 
     getProject = () => {
         this.ProjectServices.getProject(this.props.match.params.id)
-            .then(theProject => this.setState({ ...this.state, project: theProject }))
+            .then(theProject => {
+                console.log(this.props.match.params.id)
+                this.setState({ ...this.state, project: theProject })
+            })
             .catch(err => console.log(err))
     }
-
-
-
-
-
 
     closeModal = () => this.setState({ showModal: false })
 
@@ -45,9 +44,20 @@ class Project extends Component {
 
     render() {
 
+        // console.log(this.state)
+        const { name, proposal, opportunity } = this.state.project
+
         return (
 
             <Container>
+                <h1> {name}</h1>
+
+                <Col>
+
+                    <ProjectInfoBox title="Proposal" content={proposal} />
+                    <ProjectInfoBox title="Opportunity" content={opportunity} />
+
+                </Col>
 
             </Container>
         )

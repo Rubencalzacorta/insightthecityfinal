@@ -16,3 +16,5 @@ router.post('/upload', uploader.single("imageUrl"), (req, res, next) => {
 })
 
 module.exports = router;
+
+//// Uploader array para varias fotos

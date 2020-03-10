@@ -5,6 +5,7 @@ import './Map.css'
 
 import mapboxgl from 'mapbox-gl';
 import data from "./madridVectors.json"
+import demografics from "./demografia.json"
 
 
 // import Container from 'react-bootstrap/Container'
@@ -45,10 +46,34 @@ class Map extends Component {
 
 
 
+    mergedata = () => {
+
+
+        for (let i = 0; i < data.features.length; i++) {
+            for (let y = 0; y < demografics.length; y++) {
+
+
+
+                if (data.features[i].properties.name == demografics[y].code) {
+                    data.features[i].properties = { ...data.features[i].properties, ...demografics[y] }
+                }
+
+
+
+            }
+
+        }
+
+        console.log(data)
+
+    }
+
     sendFilters = () => this.props.postFilters(this.state)
 
 
     componentDidMount() {
+
+        this.mergedata()
 
         // this.props.state && this.initialState()
 
@@ -141,6 +166,7 @@ class Map extends Component {
 
 
     render() {
+
 
         return (
 
