@@ -16,7 +16,7 @@ export default class GoogleServices {
 
         // keyword ? keyword = keyword.replace(" ", "20%") : null
 
-        this.service.get(`/json?location=40.415843,%20-3.703589&radius=1500&keyword=${keyword}&key=AIzaSyA4kSlF_U7Jn2kZLB6bsUaLlnSqt7UJLL4`).then(response => console.log(response.data))
+        this.service.get(`/json?location=-33.8670522,151.1957362&radius=1500&keyword=cruise&key=AIzaSyA4kSlF_U7Jn2kZLB6bsUaLlnSqt7UJLL4`).then(response => console.log(response.data))
     }
 
 }
