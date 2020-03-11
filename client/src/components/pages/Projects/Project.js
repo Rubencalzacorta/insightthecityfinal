@@ -9,6 +9,7 @@ import UserSummary from "../../UI/Profile/ProfileSummary"
 import JobExperienceSection from "../../UI/Profile/JobExperienceSection"
 import MapList from "../../UI/Profile/MapsList"
 import ProjectInfoBox from "../../UI/Projects/ProjectInfoBox"
+import TeamBox from "../../UI/Projects/TeamBox"
 
 import UserServices from "../../../services/user.services"
 import ProjectServices from "../../../services/project.services"
@@ -45,7 +46,9 @@ class Project extends Component {
     render() {
 
         // console.log(this.state)
-        const { name, proposal, opportunity } = this.state.project
+        const { name, proposal, opportunity, team } = this.state.project
+
+        console.log(team)
 
         return (
 
@@ -56,6 +59,7 @@ class Project extends Component {
 
                     <ProjectInfoBox title="Proposal" content={proposal} />
                     <ProjectInfoBox title="Opportunity" content={opportunity} />
+                    <TeamBox title="The Team" team={team} />
 
                 </Col>
 

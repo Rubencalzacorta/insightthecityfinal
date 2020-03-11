@@ -45,7 +45,8 @@ class ProfileEditForm extends Component {
                 this.UserServices.addProject(project._id)
                     .then(user => user)
                     .then(user => this.ProjectServices.addTeamMember(project._id, user._id))
-                this.finishAction(project._id)
+                    .then(() => this.finishAction(project._id))
+
             })
             .catch(err => console.log(err))
     }

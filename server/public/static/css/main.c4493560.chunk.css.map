@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.css","Map.css"],"names":[],"mappings":"AAAA,KACE,wBACF,CCFA,eACI,WAAY,CACZ,UAEJ","file":"main.c4493560.chunk.css","sourcesContent":["body{\n  background-color: darkslategray;\n}",".map-container{\n    height: 60vh;\n    width: 60vh;\n    \n}"]}
