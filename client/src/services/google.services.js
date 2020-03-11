@@ -4,7 +4,7 @@ export default class GoogleServices {
 
     constructor() {
         this.service = axios.create({
-            baseURL: '/https://maps.googleapis.com/maps/api/place/nearbysearch',
+            baseURL: 'https://maps.googleapis.com/maps/api/place/',
             withCredentials: true   // RUTAS PERSISTENTES
         })
     }
@@ -16,7 +16,17 @@ export default class GoogleServices {
 
         // keyword ? keyword = keyword.replace(" ", "20%") : null
 
-        this.service.get(`/json?location=-33.8670522,151.1957362&radius=1500&keyword=cruise&key=AIzaSyA4kSlF_U7Jn2kZLB6bsUaLlnSqt7UJLL4`).then(response => console.log(response.data))
+        this.service.get(`nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&keyword=cruise&key=AIzaSyA4kSlF_U7Jn2kZLB6bsUaLlnSqt7UJLL4`)
+            .then(response => {
+                console.log("RESPONSES")
+                console.log(response)
+                console.log(response.data)
+            })
+            .catch(err => {
+                console.log("Errores")
+                console.log(err)                     //Axios entire error message
+                console.log(err.response.data.error) //Google API error message 
+            })
     }
 
 }
