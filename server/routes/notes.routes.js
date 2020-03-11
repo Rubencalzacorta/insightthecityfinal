@@ -15,7 +15,6 @@ const Note = require("../models/Note");
 
 router.post("/create", (req, res, next) => {
 
-
     Note.create({ ...req.body })
         .then(newNote => {
             console.log(newNote)

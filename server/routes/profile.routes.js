@@ -7,7 +7,9 @@ const MapGraph = require("../models/MapGraph");
 router.get("/:id", (req, res, next) => {
 
 
-    User.findById(req.params.id).populate("maps")
+    User.findById(req.params.id)
+        .populate("maps")
+        .populate("projects")
         .then(newUser => res.status(200).json(newUser))
         .catch(err => console.log("error retrieving the user data"))
 })

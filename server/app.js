@@ -14,7 +14,6 @@ const app = express();
 require("./configs/middleware.configs")(app)
 require("./configs/views.configs")(app)
 require("./configs/handlebars.configs")
-app.locals.title = 'Express - Generated with IronGenerator';
 require("./configs/passport.configs")(app)
 require("./configs/cors.configs")(app)
 

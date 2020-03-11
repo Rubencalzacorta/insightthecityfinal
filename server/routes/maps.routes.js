@@ -15,7 +15,6 @@ const Note = require("../models/Note");
 
 router.post("/create", (req, res, next) => {
 
-
     MapGraph.create({ ...req.body })
         .then(newMap => {
             console.log(newMap)
@@ -25,26 +24,13 @@ router.post("/create", (req, res, next) => {
 })
 
 
-// router.post("/getmap", (req, res, next) => {
-
-//     MapGraph.findById(req.body)
-//         .then(foundMap => {
-//             console.log(foundMap)
-//             res.status(200).json(foundMap)
-//         })
-//         .catch(err => console.log("error buscando el mapa", err))
-
-
-// })
 
 router.get("/getmap/:id", (req, res, next) => {
 
-
     MapGraph.findById(req.params.id)
-        // .populate("notes")
         .populate("creator")
+        .populate("notes")
         .then(foundMap => {
-            // console.log(foundMap)
             res.status(200).json(foundMap)
         })
         .catch(err => console.log("------------------------error buscando el mapa", err))
@@ -65,17 +51,20 @@ router.post("/getmap/:id", (req, res, next) => {
 
 })
 
-// router.post("/addnote", (req, res, next) => {
+router.post("/addnote", (req, res, next) => {
 
-//     MapGraph.findByIdAndUpdate(req.body.creator, { $push: { maps: req.body._id } })
-//         .then(updatedUser => res.status(200).json(updatedUser))
-//         .catch(err => console.log("error retrieving the user data", err))
-// })
-//     .catch(err => console.log("error buscando el mapa", err))
+    const newNote = {
+        $push: {
+            notes
+                : req.body.noteId
+        }
+    }
 
+    MapGraph.findByIdAndUpdate(req.body.mapId, newNote, { new: true }).populate("notes")
+        .then(updatedMap => res.status(200).json(updatedMap))
+        .catch(err => console.log("error retrieving the user data", err))
 
-// })
-
+})
 
 
 // router.get("/getusermaps", (req, res, next) => {

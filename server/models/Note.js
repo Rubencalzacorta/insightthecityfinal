@@ -8,11 +8,6 @@ const noteSchema = new Schema({
         ref: 'User'
     },
 
-    // map: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Note'
-    // },
-
     text: String,
 
 }, {

@@ -22,13 +22,12 @@ router.post("/create", (req, res, next) => {
 router.get("/:id", (req, res, next) => {
     Publication.findById(req.params.id)
         .populate("creator")
+        .populate("team")
         .then(thePublication => res.status(200).json(thePublication))
         .catch(err => console.log("error retrieving the project data", err))
 })
 
 router.post("/addTeamMember", (req, res, next) => {
-
-    console.log(req.body)
 
     const newTeamMember = {
         $push: {
@@ -37,6 +36,16 @@ router.post("/addTeamMember", (req, res, next) => {
     }
 
     Publication.findByIdAndUpdate(req.body.projectId, newTeamMember, { new: true })
+        .then(updatedProject => res.status(200).json(updatedProject))
+        .catch(err => console.log("error retrieving the user data", err))
+
+})
+
+router.post("/updatemain", (req, res, next) => {
+
+    const { _id, name, opportunity, proposal } = req.body
+
+    Publication.findByIdAndUpdate(_id, { name, opportunity, proposal }, { new: true })
         .then(updatedProject => {
             console.log(updatedProject)
             res.status(200).json(updatedProject)
@@ -44,6 +53,9 @@ router.post("/addTeamMember", (req, res, next) => {
         .catch(err => console.log("error retrieving the user data", err))
 
 })
+
+
+
 
 
 

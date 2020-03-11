@@ -15,7 +15,7 @@ const userSchema = new Schema({
 
   projects: [{
     type: Schema.Types.ObjectId,
-    ref: 'Project'
+    ref: 'Publication'
   }],
 
   organizations: [{
