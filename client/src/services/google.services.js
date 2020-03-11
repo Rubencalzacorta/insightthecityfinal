@@ -18,6 +18,22 @@ export default class GoogleServices {
 
         this.service.get(`nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&keyword=cruise&key=AIzaSyA4kSlF_U7Jn2kZLB6bsUaLlnSqt7UJLL4`)
             .then(response => {
+
+                const places = []
+
+                response.data.results.forEach((elm, idx) => {
+
+                    let place = {}
+
+                    place.name = elm.name
+                    place.lat = elm.geometry.locacion.lat
+                    place.lng = elm.geometry.locacion.lng
+
+                    places.push(place)
+                })
+
+                console.log(places)
+
                 console.log("RESPONSES")
                 console.log(response)
                 console.log(response.data)
