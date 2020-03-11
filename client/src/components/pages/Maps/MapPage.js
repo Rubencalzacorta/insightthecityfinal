@@ -11,6 +11,8 @@ import Container from 'react-bootstrap/Container'
 // import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 // import Modal from 'react-bootstrap/Modal'
+import { Link } from 'react-router-dom'
+
 
 
 import UserServices from "../../../services/user.services"
@@ -46,14 +48,18 @@ class MapPage extends Component {
         this.setState({ ...this.setState, ...filters, creator: this.props.loggedInUser._id })
     }
 
-
     postMap = () => {
 
         this.MapServices.postMap(this.state)
             .then(newMap => this.UserServices.addMap(newMap))
-            .then(addedMap => console.log(addedMap))
+            .then(addedMap => {
+
+                console.log(addedMap)
+                this.props.history.push(`/maps/${addedMap._id}`)
+            })
 
     }
+
 
 
     render() {

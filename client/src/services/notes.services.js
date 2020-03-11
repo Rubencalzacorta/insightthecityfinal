@@ -8,7 +8,7 @@ class mapServices {
         })
     }
 
-    postNote = note => this.service.post("/create", note).then(response => console.log(response.data))
+    postNote = note => this.service.post("/create", note).then(response => response.data)
 
     // getMap = mapId => this.service.post("/getmap", mapId).then(response => response.data)
 

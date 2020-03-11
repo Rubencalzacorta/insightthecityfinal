@@ -13,30 +13,24 @@ import MapServices from "../../../services/maps.services"
 // const UserService = new UserServices()
 const MapService = new MapServices()
 
-const MapsTable = (props) => {
-
-
-    // props.userDetails.maps && console.log(mapList)
-    props.list && console.log("TODO, Meter los elementos en la lista")
-
+const ProjectList = (props) => {
 
     return (
 
         props.list ?
             <div>
 
-                <h2>Map list</h2>
+                <h2>Project list</h2>
                 <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th>Ceated</th>
-                            <th>Demografics</th>
-                            <th>keywords</th>
-                            <th>Add to Project</th>
+                            <th>Name</th>
+                            <th>Opportunity</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {props.list.map((elm, idx) => <Link className="map-table-item" to={`/maps/${elm._id}`}> <MapListItem key={idx} item={elm} /></Link>)}
+                        {props.list.map((elm, idx) => <Link className="project-table-item" to={`/projects/${elm._id}`}> <MapListItem key={idx} item={elm} /></Link>)}
                     </tbody>
                 </Table>
             </div>
@@ -47,4 +41,4 @@ const MapsTable = (props) => {
 
 }
 
-export default MapsTable
+export default ProjectList

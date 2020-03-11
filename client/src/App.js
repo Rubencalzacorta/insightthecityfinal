@@ -8,10 +8,10 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 
 import AuthServices from "./services/auth.services"
 
-import Home from "./components/pages/Home/home"
+import Home from "./components/pages/Home/Home"
 import Login from "./components/pages/auth/login/login"
 import Signup from "./components/pages/auth/signup/signup"
-import Profile from "./components/pages/profile/profile"
+import Profile from "./components/pages/Profile/Profile"
 import Navigation from "./components/UI/NavBar/NavBar"
 import MapPage from "./components/pages/Maps/MapPage"
 import MapPageId from "./components/pages/Maps/MapPageId"

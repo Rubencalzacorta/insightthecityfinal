@@ -14,7 +14,7 @@ class ProjectServices {
 
     addTeamMember = (projectId, memberId) => this.service.post("/addteammember", { projectId, memberId }).then(response => response.data)
 
-    // getMap = mapId => this.service.post("/getmap", mapId).then(response => response.data)
+    updateProject = project => this.service.post("/updatemain", project).then(response => response.data)
 
     // this.service.get("/getmap", mapId).then(response => response.data)
 

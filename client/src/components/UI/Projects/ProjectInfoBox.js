@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom'
 
 const ProjectInfoBox = (props) => {
 
-
     // props.userDetails.maps && console.log(mapList)
 
     return (
@@ -19,7 +18,7 @@ const ProjectInfoBox = (props) => {
 
                     <h2>{props.title}</h2>
 
-                    <p>{props.conentent}</p>
+                    <p>{props.content}</p>
 
                 </article>
             </div>

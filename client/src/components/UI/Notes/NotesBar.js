@@ -16,6 +16,9 @@ import GoogleServices from "../../../services/google.services"
 import NotesServices from "../../../services/notes.services"
 import MapsServices from "../../../services/maps.services"
 
+import SingleNote from "./SingleNote"
+
+
 
 class notesBar extends Component {
 
@@ -42,7 +45,8 @@ class notesBar extends Component {
     handleSubmit = () => {
 
         this.NotesServices.postNote(this.state)
-            .then(newNote => this.MapsServices.addNotes(newNote._id))
+            .then(newNote => this.MapsServices.addNotes({ mapId: this.props.state._id, noteId: newNote._id }))
+            .then(updatedMap => this.props.postFilters(updatedMap))
 
         this.resetNote()
 
@@ -53,26 +57,35 @@ class notesBar extends Component {
 
     render() {
 
+        console.log(this.props.state)
+
         return (
 
             <>
-                <Col md={3}>
-                    <h1> Notes</h1>
+                {this.props.state ?
+                    <Col md={3}>
 
-                    <Form id="note-form" onSubmit={this.handleSubmit}>
+                        <h1> Notes</h1>
 
-                        <Form.Group>
-                            <Form.Label>Add Note</Form.Label>
-                            <Form.Control id="note-box" type="text" name="text" onChange={this.handleChange} onClick={this.submitNote} placeholder="write a note" required />
-                        </Form.Group>
-                        <Button variant="dark" type="button" onClick={this.handleSubmit}>Make note</Button>
+                        <Form id="note-form" onSubmit={this.handleSubmit}>
 
-                        <div>
+                            <Form.Group>
+                                <Form.Label>Add Note</Form.Label>
+                                <Form.Control id="note-box" type="text" name="text" onChange={this.handleChange} onClick={this.submitNote} placeholder="write a note" required />
+                            </Form.Group>
+                            <Button variant="dark" type="button" onClick={this.handleSubmit}>Make note</Button>
 
-                        </div>
-                    </Form>
 
-                </Col>
+                            <div className="notes-container">
+                                {this.props.state.notes.map((elm, idx) => <SingleNote key={idx} eachNote={elm} />)}
+                            </div>
+
+                        </Form>
+
+                    </Col>
+
+                    : "Save the map for enabling comments."
+                }
             </>
         )
     }

@@ -95,9 +95,6 @@ class ProfileEditForm extends Component {
                             <Form.Control type="text" name="description" value={description} onChange={this.handleChange} />
                         </Form.Group>
 
-
-
-
                         <Form.Group>
                             <Form.Label>Work experience</Form.Label>
 

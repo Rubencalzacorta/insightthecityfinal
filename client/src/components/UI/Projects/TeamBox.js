@@ -2,24 +2,23 @@ import React from 'react'
 import Table from 'react-bootstrap/Table'
 
 import { Link } from 'react-router-dom'
+import ProjectServices from "../../../services/project.services"
 
-
-const ProjectInfoBox = (props) => {
-
+const TeamBox = (props) => {
 
     // props.userDetails.maps && console.log(mapList)
+    console.log(props)
 
     return (
 
-        props ?
+        props.team != undefined ?
+
             <div className="project-team-box">
-                <article>
+                <h1>Team</h1>
 
-                    <h2>{props.title}</h2>
+                {/* {props.team.forEach((elm, idx) => <p key={idx}>{elm}</p>)} */}
 
-                    <p>{props.conentent}</p>
-
-                </article>
+                {/* {props.team.forEach((elm, idx) => <p key={idx}>{elm}</p>)} */}
             </div>
 
             : "loading"
@@ -28,4 +27,4 @@ const ProjectInfoBox = (props) => {
 
 }
 
-export default ProjectInfoBox
+export default TeamBox

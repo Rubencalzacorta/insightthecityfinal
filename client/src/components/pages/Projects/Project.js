@@ -5,11 +5,11 @@ import Modal from 'react-bootstrap/Modal'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
-import UserSummary from "../../UI/Profile/ProfileSummary"
-import JobExperienceSection from "../../UI/Profile/JobExperienceSection"
-import MapList from "../../UI/Profile/MapsList"
+
+import ProjectEditForm from "../../UI/Projects/ProjectEditForm"
 import ProjectInfoBox from "../../UI/Projects/ProjectInfoBox"
 import TeamBox from "../../UI/Projects/TeamBox"
+import TeamMemberSummary from "../../UI/Projects/TeamMemberSummary"
 
 import UserServices from "../../../services/user.services"
 import ProjectServices from "../../../services/project.services"
@@ -21,7 +21,8 @@ class Project extends Component {
         super(props)
         this.state = {
             project: {},
-            showModal: false
+            showModal: false,
+            showTeamModal: false
         }
         this.ProjectServices = new ProjectServices()
     }
@@ -31,17 +32,23 @@ class Project extends Component {
 
     getProject = () => {
         this.ProjectServices.getProject(this.props.match.params.id)
-            .then(theProject => {
-                console.log(this.props.match.params.id)
-                this.setState({ ...this.state, project: theProject })
-            })
+            .then(theProject => this.setState({ ...this.state, project: theProject }))
             .catch(err => console.log(err))
     }
+
 
     closeModal = () => this.setState({ showModal: false })
 
     openModal = () => this.setState({ showModal: true })
 
+    // closeTeamModal = () => this.setState({ showModal: false })
+
+    // openTeamModal = () => this.setState({ showModal: true })
+
+    updateState = state => {
+        console.log("ser recibio el update state")
+        this.setState({ ...this.state, project: { ...state } })
+    }
 
     render() {
 
@@ -49,48 +56,52 @@ class Project extends Component {
         const { name, proposal, opportunity, team } = this.state.project
 
         console.log(team)
-
         return (
 
-            <Container>
-                <h1> {name}</h1>
+            this.props ?
 
-                <Col>
+                <Container>
+                    <h1> {name}</h1>
+                    <button onClick={this.openModal} >Edit project</button>
 
-                    <ProjectInfoBox title="Proposal" content={proposal} />
-                    <ProjectInfoBox title="Opportunity" content={opportunity} />
-                    <TeamBox title="The Team" team={team} />
+                    <Col>
+                        <Row>
+                            <ProjectInfoBox title="Proposal" content={proposal} />
+                        </Row>
 
-                </Col>
+                        <Row>
+                            <ProjectInfoBox title="Opportunity" content={opportunity} />
+                        </Row>
 
-            </Container>
+                        <Row>
+
+                            <div className="project-team-box">
+                                <h1>Team</h1>
+
+                                {/* {team ? <p>Existe</p> : "loading"} */}
+
+                                {team ? team.map((elm, idx) => <TeamMemberSummary key={idx} userDetails={elm} />) : "loading"}
+                            </div>
+                        </Row>
+
+
+
+                        <Modal show={this.state.showModal} onHide={this.closeTeamModal}>
+                            <Modal.Body>
+                                <h3>Edit your Project</h3>
+                                <hr></hr>
+                                <ProjectEditForm closeModal={this.closeModal} project={this.state.project} updateState={this.updateState} />
+                            </Modal.Body>
+                        </Modal>
+
+                    </Col>
+
+                </Container>
+                :
+                "loading"
         )
     }
 }
 
 export default Project
-
-
-    // < Row className = "align-items-left" >
-
-
-    //     <UserSummary userDetails={this.state.user} />
-
-    //     <Col md={9}>
-    //         <h1>Hi {this.state.username}, Welcome to your profile</h1>
-    //         <button onClick={this.openModal} >Edit profile</button>
-
-    //         <JobExperienceSection userDetails={this.state.user} />
-
-    //         <MapList list={this.state.user.maps} />
-
-    //     </Col>
-
-
-
-
-    //                 {/* {this.props.loggedInUser ? <ProfileEditForm closeModal={this.closeModal} loggedInUser={this.props.loggedInUser} /> : <h1>cargando</h1>} */ }
-
-
-    //             </Row >
 

@@ -9,9 +9,9 @@ import ProfileEditForm from "../../UI/Profile/ProfileEditForm"
 import UserSummary from "../../UI/Profile/ProfileSummary"
 import JobExperienceSection from "../../UI/Profile/JobExperienceSection"
 import MapList from "../../UI/Profile/MapsList"
+import ProjectList from "../../UI/Profile/ProjectList"
 
 import UserServices from "../../../services/user.services"
-
 
 class Profile extends Component {
 
@@ -19,7 +19,8 @@ class Profile extends Component {
         super(props)
         this.state = {
             user: {},
-            showModal: false
+            showModal: false,
+            showList: "maps"
         }
         this.UserServices = new UserServices()
     }
@@ -33,6 +34,9 @@ class Profile extends Component {
             .catch(err => console.log(err))
     }
 
+    showMaps = () => this.setState({ ...this.state, showList: "maps" })
+
+    showProjects = () => this.setState({ ...this.state, showList: "projects" })
 
     closeModal = () => this.setState({ showModal: false })
 
@@ -55,10 +59,21 @@ class Profile extends Component {
 
                         <JobExperienceSection userDetails={this.state.user} />
 
-                        <MapList list={this.state.user.maps} />
+                        <div className="profile-toggle-box">
+                            <button onClick={this.showMaps}>Maps</button>
 
+                        </div>
 
+                        <div className="profile-toggle-box">
+                            <button onClick={this.showProjects}>Projects</button>
 
+                        </div>
+
+                        {this.state.showList === "maps" ?
+                            <MapList list={this.state.user.maps} />
+                            :
+                            <ProjectList list={this.state.user.projects} />
+                        }
 
                     </Col>
 

@@ -32,7 +32,7 @@ class ProfileSummary extends Component {
 
                 {this.props.userDetails ?
 
-                    <Col md={3}>
+                    <Col md={6}>
 
                         <Card>
                             <Card.Img variant="top" src={imageUrl ? imageUrl : "http://getdrawings.com/free-icon/user-icon-67.png"} />
@@ -42,14 +42,7 @@ class ProfileSummary extends Component {
                                     {description ? description : ""}
                                 </Card.Text>
                             </Card.Body>
-                            <Card.Body>
-                                <Card.Title>Activity</Card.Title>
-                                <Card.Text>
-                                    maps: {maps ? maps.length : "0"} <br />
-                                    projects: {projects ? projects.length : "0"} <br />
-                                    organizations: {organizations ? organizations.length : "0"}
-                                </Card.Text>
-                            </Card.Body>
+
                             <Card.Body>
                                 <Card.Title>Contact</Card.Title>
                                 <Card.Text>

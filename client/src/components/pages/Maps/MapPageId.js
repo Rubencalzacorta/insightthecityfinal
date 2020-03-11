@@ -56,8 +56,6 @@ class MapPageId extends Component {
     }
 
 
-
-
     postFilters = (filters) => {
         this.setState({ ...this.setState, ...filters, creator: this.props.loggedInUser._id })
     }
@@ -83,7 +81,7 @@ class MapPageId extends Component {
 
                         {this.state.updated ? <Map postFilters={this.postFilters} state={this.state} /> : null}
 
-                        <NotesBar loggedInUser={this.props.loggedInUser} state={this.state} />
+                        <NotesBar loggedInUser={this.props.loggedInUser} postFilters={this.postFilters} state={this.state} />
 
                     </Row>
 
