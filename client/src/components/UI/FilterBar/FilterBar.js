@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 
 // import mapboxgl from 'mapbox-gl';
 
+import "./FilterBar.css"
+
 // import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 // import Row from 'react-bootstrap/Row'
@@ -38,9 +40,8 @@ class MapFilterBar extends Component {
 
             this.setState({
 
-                demografic: this.props.state.demografic,
                 googleKWords: this.props.state.googleKWords,
-                // searchPoints: this.props.state.searchPoints,
+                searchPoints: this.props.state.searchPoints,
 
             })
 
@@ -50,8 +51,8 @@ class MapFilterBar extends Component {
     // this.setState({ ...this.state, searchPoints: searchResults })
     getPlaces = (keywords) => {
         this.GoogleServices.getPlaces(keywords)
-            .then(searchResults => console.log(searchResults))
-        // .then(() => this.sendFilters())
+            .then(searchResults => this.setState({ ...this.state, searchPoints: searchResults }))
+            .then(() => this.sendFilters())
     }
 
     searchPlaces = () => this.getPlaces(this.state.googleKWords)
@@ -64,16 +65,21 @@ class MapFilterBar extends Component {
         this.sendFilters()
     }
 
+    handleSubmit = e => {
+        e.preventDefault()
+        this.searchPlaces()
 
+    }
     render() {
 
         return (
 
             <>
-                <Col md={3}>
+
+                <div className="filter-bar">
                     <h1> Filters</h1>
 
-                    <Form id="profile-edit-form">
+                    <Form id="profile-edit-form" onSubmit={this.handleSubmit}>
 
                         <Form.Group>
                             <Form.Label>search</Form.Label>
@@ -82,8 +88,8 @@ class MapFilterBar extends Component {
 
                         <Button variant="dark" type="button" onClick={this.searchPlaces} >Search</Button>
                     </Form>
+                </div>
 
-                </Col>
             </>
         )
     }

@@ -25,7 +25,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      loggedInUser: false
+      loggedInUser: null
     }
     this.AuthServices = new AuthServices()
   }
@@ -40,15 +40,32 @@ class App extends Component {
   }
 
   fetchUser = () => {
-    this.AuthServices.loggedin()
-      .then(theUser => {
-        this.setState({ loggedInUser: theUser })
-      })
-      .catch(() => this.setState({ loggedInUser: false }))
+    if (this.state.loggedInUser === null) {
+      this.AuthServices.loggedin()
+        .then(theUser => {
+          this.setState({ loggedInUser: theUser })
+        })
+        .catch(() => this.setState({ loggedInUser: false }))
+    }
+  }
+
+  nullRedirect = (state, props) => {
+
+    if (state != null) {
+
+      return state ? <Profile loggedInUser={this.state.loggedInUser} setTheUser={this.setTheUser} {...props} /> : <Redirect to="/login"></Redirect>
+
+    } else {
+
+      return "Loading"
+    }
+
   }
 
 
   render() {
+
+    console.log(this.state.loggedInUser)
 
     return (
       <>
@@ -59,17 +76,13 @@ class App extends Component {
           <Route exact path="/" render={props => <Home {...props} />} />
           <Route path="/login" render={props => <Login setTheUser={this.setTheUser} {...props} />} />
           <Route path="/signup" render={props => <Signup setTheUser={this.setTheUser} {...props} />} />
-          <Route path="/profile/:id" render={props => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} setTheUser={this.setTheUser} {...props} /> : <Redirect to="/login"></Redirect>} />
+          <Route path="/profile/:id" render={props => this.nullRedirect(this.state.loggedInUser, props)} />
+
           <Route path="/maps/create" render={props => <MapPage loggedInUser={this.state.loggedInUser} {...props} />} />
           <Route path="/maps/:id" render={props => <MapPageId loggedInUser={this.state.loggedInUser} {...props} />} />
           <Route path="/projects/create" render={props => this.state.loggedInUser ? <NewProjectForm loggedInUser={this.state.loggedInUser} {...props} /> : <Redirect to="/login"></Redirect>} />
           <Route path="/projects/:id" render={props => this.state.loggedInUser ? <Project loggedInUser={this.state.loggedInUser} {...props} /> : <Redirect to="/login"></Redirect>} />
 
-
-
-
-          {/* <Route path="/project/create" render={props => <MapPagexId loggedInUser={this.state.loggedInUser} {...props} />} /> */}
-          {/* <Route path="/maps/create" render={props => this.state.loggedInUser ? <Map loggedInUser={this.state.loggedInUser} setTheUser={this.setTheUser} {...props} /> : <Redirect to="/login"></Redirect>} /> */}
         </Switch>
       </>
     )

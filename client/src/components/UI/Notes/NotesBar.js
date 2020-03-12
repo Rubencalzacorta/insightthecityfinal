@@ -61,8 +61,8 @@ class notesBar extends Component {
 
             <>
                 {this.props.state ?
-                    <Col md={3}>
 
+                    <div>
                         <h1> Notes</h1>
 
                         <Form id="note-form" onSubmit={this.handleSubmit}>
@@ -79,8 +79,7 @@ class notesBar extends Component {
                             </div>
 
                         </Form>
-
-                    </Col>
+                    </div>
 
                     : "Save the map for enabling comments."
                 }

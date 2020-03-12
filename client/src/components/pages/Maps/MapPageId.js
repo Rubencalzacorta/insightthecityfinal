@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 
 import mapboxgl from 'mapbox-gl';
 
+import "./MapPageId.css"
+
 import Map from "../../UI/maps/Map"
 import MapFilterBar from "../../UI/FilterBar/FilterBar"
 import NotesBar from "../../UI/Notes/NotesBar"
 
 
 import Container from 'react-bootstrap/Container'
-// import Col from 'react-bootstrap/Col'
+import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 // import Modal from 'react-bootstrap/Modal'
 
@@ -27,12 +29,13 @@ class MapPageId extends Component {
         super(props)
         this.state = {
             creator: "",
-            demografic: "",
+            active: [],
             googleKWords: "",
             lng: -3.70,
             lat: 40.4115,
             zoom: 11,
             notes: [],
+            searchPoints: {}
 
 
         }
@@ -74,14 +77,17 @@ class MapPageId extends Component {
         return (
 
             <>
-                <Container>
+                <Container className="map-wrapper" fluid={true}>
                     <Row>
-
-                        <MapFilterBar postFilters={this.postFilters} state={this.state} />
 
                         {this.state.updated ? <Map postFilters={this.postFilters} state={this.state} /> : null}
 
-                        <NotesBar loggedInUser={this.props.loggedInUser} postFilters={this.postFilters} state={this.state} />
+                        <Col md={3} >
+
+                            <MapFilterBar postFilters={this.postFilters} state={this.state} />
+
+                            <NotesBar loggedInUser={this.props.loggedInUser} postFilters={this.postFilters} state={this.state} />
+                        </Col>
 
                     </Row>
 
