@@ -4,7 +4,7 @@ export default class GoogleServices {
 
     constructor() {
         this.service = axios.create({
-            baseURL: 'https://maps.googleapis.com/maps/api/place/',
+            baseURL: 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/',
             // RUTAS PERSISTENTES
         })
     }
