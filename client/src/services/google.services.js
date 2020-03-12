@@ -14,30 +14,42 @@ export default class GoogleServices {
 
     getPlaces = (keyword) => {
 
-        // keyword ? keyword = keyword.replace(" ", "20%") : null
+        let newKeyword = ""
 
-        this.service.get(`nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&keyword=cruise&key=AIzaSyA4kSlF_U7Jn2kZLB6bsUaLlnSqt7UJLL4`)
-            .then(response => {
+        if (keyword) {
+            newKeyword = keyword.replace(" ", "20%")
+        }
 
-                const places = []
+        this.service.get(`nearbysearch/json?location=40.414295,-3.706348&radius=6000&keyword=${newKeyword}&key=AIzaSyA4kSlF_U7Jn2kZLB6bsUaLlnSqt7UJLL4`).then(response => response.data)
 
-                response.data.results.forEach((elm, idx) => {
+            // const geojson = {
+            //     type: 'FeatureCollection',
+            //     features: []
 
-                    let place = {}
+            // }
 
-                    place.name = elm.name
-                    place.lat = elm.geometry.locacion.lat
-                    place.lng = elm.geometry.locacion.lng
+            // response.data.results.forEach((elm, idx) => {
 
-                    places.push(place)
-                })
+            //     let name = elm.name
+            //     let lat = elm.geometry.location.lat
+            //     let lng = elm.geometry.location.lng
 
-                console.log(places)
+            //     let place = {
+            //         type: 'Feature',
+            //         geometry: {
+            //             type: 'Point',
+            //             coordinates: [lat, lng]
+            //         },
+            //         properties: {
+            //             title: name,
+            //         }
+            //     }
 
-                console.log("RESPONSES")
-                console.log(response)
-                console.log(response.data)
-            })
+            //     geojson.features.push(place)
+            // })
+
+            // console.log(geojson)
+
             .catch(err => {
                 console.log("Errores")
                 console.log(err)                     //Axios entire error message

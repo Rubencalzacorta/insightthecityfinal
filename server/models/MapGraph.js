@@ -15,9 +15,11 @@ const mapSchema = new Schema({
 
     demografic: String,
     googleKWords: String,
+    // searchPoints: Schema.Types.Mixed,
     lng: Number,
     lat: Number,
     zoom: Number
+
 
 
 }, {

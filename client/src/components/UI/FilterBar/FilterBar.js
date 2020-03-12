@@ -22,6 +22,7 @@ class MapFilterBar extends Component {
         this.state = {
             demografic: "",
             googleKWords: "",
+            // searchpoints: "",
 
         }
         this.GoogleServices = new GoogleServices()
@@ -39,16 +40,18 @@ class MapFilterBar extends Component {
 
                 demografic: this.props.state.demografic,
                 googleKWords: this.props.state.googleKWords,
+                // searchPoints: this.props.state.searchPoints,
 
             })
 
     }
 
 
-
+    // this.setState({ ...this.state, searchPoints: searchResults })
     getPlaces = (keywords) => {
-        console.log("llega a la barra")
         this.GoogleServices.getPlaces(keywords)
+            .then(searchResults => console.log(searchResults))
+        // .then(() => this.sendFilters())
     }
 
     searchPlaces = () => this.getPlaces(this.state.googleKWords)
