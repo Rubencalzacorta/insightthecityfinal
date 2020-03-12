@@ -16,7 +16,7 @@ import Col from 'react-bootstrap/Col'
 
 import UserServices from "../../../services/user.services"
 
-mapboxgl.accessToken = process.env.dev.MAPBOX_KEY
+mapboxgl.accessToken = process.env.MAPBOX_KEY
 
 
 
