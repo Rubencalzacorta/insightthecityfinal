@@ -43,6 +43,13 @@ class ProjectEditForm extends Component {
 
     }
 
+    handleClose = e => {
+        e.preventDefault()
+        this.finishAction()
+
+    }
+
+
 
     finishAction = () => {
         this.props.closeModal()
@@ -69,15 +76,15 @@ class ProjectEditForm extends Component {
 
                         <Form.Group>
                             <Form.Label>Proposal</Form.Label>
-                            <Form.Control type="text" name="proposal" value={proposal} onChange={this.handleChange} />
+                            <Form.Control as="textarea" type="text" name="proposal" value={proposal} onChange={this.handleChange} />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Opportunity</Form.Label>
-                            <Form.Control type="text" name="opportunity" value={opportunity} onChange={this.handleChange} />
+                            <Form.Control as="textarea" type="text" name="opportunity" value={opportunity} onChange={this.handleChange} />
                         </Form.Group>
 
                         <Button variant="dark" type="submit">Update Project</Button>
-                        <Button variant="light" type="button">Cancel</Button>
+                        <Button variant="light" type="button" onClick={this.handleClose}>Cancel</Button>
                     </Form>
                     :
                     <h1>loading</h1>}

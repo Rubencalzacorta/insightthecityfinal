@@ -43,6 +43,10 @@ class ProfileEditForm extends Component {
 
     }
 
+    handleClose = e => {
+        e.preventDefault()
+        this.finishAction()
+    }
 
 
     handleFileUpload = e => {
@@ -92,7 +96,7 @@ class ProfileEditForm extends Component {
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Short Description of yourself</Form.Label>
-                            <Form.Control type="text" name="description" value={description} onChange={this.handleChange} />
+                            <Form.Control as="textarea" type="textarea" name="description" value={description} onChange={this.handleChange} />
                         </Form.Group>
 
                         <Form.Group>
@@ -100,7 +104,7 @@ class ProfileEditForm extends Component {
 
                             <Form.Group>
                                 <Form.Label>Give us an overview of your background</Form.Label>
-                                <Form.Control type="text" name="experienceOverview" value={experienceOverview} onChange={this.handleChange} />
+                                <Form.Control as="textarea" type="text" name="experienceOverview" value={experienceOverview} onChange={this.handleChange} />
                             </Form.Group>
 
                             <Form.Text className="text-muted">Company</Form.Text>
@@ -112,7 +116,7 @@ class ProfileEditForm extends Component {
                             <Form.Text className="text-muted">End date</Form.Text>
                             <Form.Control type="date" name="endDate" value={endDate} onChange={this.handleChange} />
                             <Form.Text className="text-muted">Description</Form.Text>
-                            <Form.Control type="text" name="jobDescription" value={jobDescription} onChange={this.handleChange} />
+                            <Form.Control as="textarea" type="text" name="jobDescription" value={jobDescription} onChange={this.handleChange} />
 
                             <hr />
                         </Form.Group>
@@ -121,6 +125,7 @@ class ProfileEditForm extends Component {
 
 
                         <Button variant="dark" type="submit">Update profile</Button>
+                        <Button variant="dark" type="button" onclick={this.handleClose}>Cancel</Button>
                     </Form>
                     :
                     <h1>loading</h1>}

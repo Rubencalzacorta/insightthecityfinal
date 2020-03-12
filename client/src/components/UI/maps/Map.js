@@ -267,6 +267,51 @@ class Map extends Component {
                 this.setFill()
             });
 
+            this.map.on('load', () => {
+                this.map.addSource('pointSource', {
+                    type: 'geojson',
+                    data: {
+                        "type": "FeatureCollection",
+                        "features": [
+                            {
+                                "type": "Feature",
+                                "properties": {},
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -3.696212768554688,
+                                        40.42591145200572
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "Feature",
+                                "properties": {},
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        -3.7039375305175777,
+                                        40.404346392451686
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                });
+
+
+                this.map.addLayer({
+                    id: 'points',
+                    type: 'circle',
+                    source: 'pointSource',
+                })
+
+                this.setFill()
+
+
+            })
+
+
 
             //when a map is new, there are no props and the map has initial coordinates
         } else {
@@ -313,11 +358,12 @@ class Map extends Component {
 
     componentDidUpdate() {
 
+
+
         this.setFill()
         // console.log(this.props.state.searchPoints)
 
         // const searchData = this.props.state.searchPoints
-
     }
 
     setFill() {
@@ -369,108 +415,3 @@ class Map extends Component {
 }
 
 export default Map
-
- // const testPoints = {
-        //     "type": "FeatureCollection",
-        //     "features": [
-        //         {
-        //             "type": "Feature",
-        //             "properties": {},
-        //             "geometry": {
-        //                 "type": "Point",
-        //                 "coordinates": [
-        //                     -4.5703125,
-        //                     40.97989806962013
-        //                 ]
-        //             }
-        //         },
-        //         {
-        //             "type": "Feature",
-        //             "properties": {},
-        //             "geometry": {
-        //                 "type": "Point",
-        //                 "coordinates": [
-        //                     -3.683509826660156,
-        //                     40.41323464818589
-        //                 ]
-        //             }
-        //         },
-        //         {
-        //             "type": "Feature",
-        //             "properties": {},
-        //             "geometry": {
-        //                 "type": "Point",
-        //                 "coordinates": [
-        //                     -3.676643371582031,
-        //                     40.42264446301398
-        //                 ]
-        //             }
-        //         },
-        //         {
-        //             "type": "Feature",
-        //             "properties": {},
-        //             "geometry": {
-        //                 "type": "Point",
-        //                 "coordinates": [
-        //                     -3.7030792236328125,
-        //                     40.423167191915596
-        //                 ]
-        //             }
-        //         },
-        //         {
-        //             "type": "Feature",
-        //             "properties": {},
-        //             "geometry": {
-        //                 "type": "Point",
-        //                 "coordinates": [
-        //                     -3.6958694458007812,
-        //                     40.40251631173469
-        //                 ]
-        //             }
-        //         },
-        //         {
-        //             "type": "Feature",
-        //             "properties": {},
-        //             "geometry": {
-        //                 "type": "Point",
-        //                 "coordinates": [
-        //                     -3.6865997314453125,
-        //                     40.433620916899685
-        //                 ]
-        //             }
-        //         },
-        //         {
-        //             "type": "Feature",
-        //             "properties": {},
-        //             "geometry": {
-        //                 "type": "Point",
-        //                 "coordinates": [
-        //                     -3.7003326416015625,
-        //                     40.434666200029056
-        //                 ]
-        //             }
-        //         },
-        //         {
-        //             "type": "Feature",
-        //             "properties": {},
-        //             "geometry": {
-        //                 "type": "Point",
-        //                 "coordinates": [
-        //                     -3.70513916015625,
-        //                     40.417155564302945
-        //                 ]
-        //             }
-        //         },
-        //         {
-        //             "type": "Feature",
-        //             "properties": {},
-        //             "geometry": {
-        //                 "type": "Point",
-        //                 "coordinates": [
-        //                     -3.6711502075195312,
-        //                     40.4166327886885
-        //                 ]
-        //             }
-        //         }
-        //     ]
-        // }
