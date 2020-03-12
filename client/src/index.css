@@ -1,7 +1,9 @@
 body{
-  background-color:whitesmoke;
+  background-color:rgb(240, 239, 233);
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 .map-table-item{
   display: block;
 }
+

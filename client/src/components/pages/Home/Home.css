@@ -1,0 +1,62 @@
+#hero-home-section{
+    height: 90vh;
+    width: 100;
+   
+
+}
+
+#hero{
+    width: 90vh;
+    background-color: whitesmoke;
+    height: 100%;
+    margin: auto;
+    padding-left: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-content: space-between;
+}
+
+header {
+    width: 50%;
+    margin-top: 20%;
+}
+
+header  h1{
+    font-size: 6rem;
+}
+
+#hero p{
+    margin-top: 10%;
+    font-size: 1rem;
+   
+}
+
+.home-action{
+    margin-top: 7%;
+    width: 90%;
+    display:inline-flex;
+    justify-content: space-evenly;
+}
+
+.home-buttons{
+    text-decoration: none;
+    padding: 10px;
+    border: 1px rebeccapurple solid;
+    border-radius: 15px;
+    width: 200px;
+    text-align: center;
+    color: rebeccapurple;
+}
+
+.home-buttons:hover{
+    color: seashell;
+    border: 1px white solid;
+    background-color: rebeccapurple;
+}
+
+.more-info-scroll{
+    text-align: center;
+}
+
+

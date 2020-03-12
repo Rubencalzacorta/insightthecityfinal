@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 
 
 // import mapboxgl from 'mapbox-gl';
-
+import "./NotesBar.css"
 
 // import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
@@ -42,8 +42,8 @@ class notesBar extends Component {
         this.setState({ creator: this.props.loggedInUser._id, [name]: value })
     }
 
-    handleSubmit = () => {
-
+    handleSubmit = (e) => {
+        e.preventDefault()
         this.NotesServices.postNote(this.state)
             .then(newNote => this.MapsServices.addNotes({ mapId: this.props.state._id, noteId: newNote._id }))
             .then(updatedMap => this.props.postFilters(updatedMap))
@@ -62,8 +62,7 @@ class notesBar extends Component {
             <>
                 {this.props.state ?
 
-                    <div>
-                        <h1> Notes</h1>
+                    <div className="notes-wrapper">
 
                         <Form id="note-form" onSubmit={this.handleSubmit}>
 
@@ -71,7 +70,7 @@ class notesBar extends Component {
                                 <Form.Label>Add Note</Form.Label>
                                 <Form.Control id="note-box" type="text" name="text" onChange={this.handleChange} onClick={this.submitNote} placeholder="write a note" required />
                             </Form.Group>
-                            <Button variant="dark" type="button" onClick={this.handleSubmit}>Make note</Button>
+                            <Button variant="outline-secondary" type="button" onClick={this.handleSubmit}>Make note</Button>
 
 
                             <div className="notes-container">

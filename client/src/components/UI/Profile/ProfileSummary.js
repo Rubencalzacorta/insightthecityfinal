@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col'
 // import ListGroup from 'react-bootstrap/ListGroup'
 // import Row from 'react-bootstrap/Row'
 // import Modal from 'react-bootstrap/Modal'
-
+import "./ProfileSummary.css"
 // import GoogleServices from "../../../services/google.services"
 
 
@@ -35,7 +35,7 @@ class ProfileSummary extends Component {
                     <Col md={3}>
 
                         <Card>
-                            <Card.Img variant="top" src={imageUrl ? imageUrl : "http://getdrawings.com/free-icon/user-icon-67.png"} />
+                            <Card.Img className="profile-pic" variant="top" src={imageUrl ? imageUrl : "http://getdrawings.com/free-icon/user-icon-67.png"} />
                             <Card.Body>
                                 <Card.Title>{name ? name : ""} {lastName ? lastName : ""}</Card.Title>
                                 <Card.Text>

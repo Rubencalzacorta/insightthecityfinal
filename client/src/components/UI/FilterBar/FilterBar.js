@@ -76,17 +76,16 @@ class MapFilterBar extends Component {
 
             <>
 
-                <div className="filter-bar">
-                    <h1> Filters</h1>
+                <div className="filter-box">
 
-                    <Form id="profile-edit-form" onSubmit={this.handleSubmit}>
+                    <Form id="google-search-form" onSubmit={this.handleSubmit}>
 
                         <Form.Group>
                             <Form.Label>search</Form.Label>
                             <Form.Control type="text" name="googleKWords" onChange={this.handleChange} placeholder="search for keywords" />
                         </Form.Group>
 
-                        <Button variant="dark" type="button" onClick={this.searchPlaces} >Search</Button>
+                        <Button variant="outline-secondary" type="button" onClick={this.searchPlaces} >Search</Button>
                     </Form>
                 </div>
 

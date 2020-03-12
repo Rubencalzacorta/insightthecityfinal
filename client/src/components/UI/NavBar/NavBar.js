@@ -35,10 +35,9 @@ class Navigation extends Component {
 
         return (
 
-
             this.props.loggedInUser ?
                 (
-                    <Navbar bg="dark" expand="lg" variant="dark">
+                    <Navbar bg="dark" expand="lg" variant="dark"  >
                         <Navbar.Brand href="#home">Insight dct</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">

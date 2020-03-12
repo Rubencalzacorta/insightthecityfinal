@@ -312,136 +312,12 @@ class Map extends Component {
 
 
     componentDidUpdate() {
+
         this.setFill()
         // console.log(this.props.state.searchPoints)
 
         // const searchData = this.props.state.searchPoints
 
-        const testPoints = {
-            "type": "FeatureCollection",
-            "features": [
-                {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -4.5703125,
-                            40.97989806962013
-                        ]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -3.683509826660156,
-                            40.41323464818589
-                        ]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -3.676643371582031,
-                            40.42264446301398
-                        ]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -3.7030792236328125,
-                            40.423167191915596
-                        ]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -3.6958694458007812,
-                            40.40251631173469
-                        ]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -3.6865997314453125,
-                            40.433620916899685
-                        ]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -3.7003326416015625,
-                            40.434666200029056
-                        ]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -3.70513916015625,
-                            40.417155564302945
-                        ]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [
-                            -3.6711502075195312,
-                            40.4166327886885
-                        ]
-                    }
-                }
-            ]
-        }
-
-        this.map.on('load', () => {
-            this.map.addSource('Search', {
-                type: 'geojson',
-                testPoints
-            })
-
-            this.map.addLayer({
-                id: 'testPoints',
-                type: 'point',
-                source: 'testPoints',
-                paint: {
-                    'color': 'rgba(55,148,179,1)'
-                },
-                layout: {
-                    'visibility': 'visible'
-                },
-
-            }, 'country-label-md')
-
-        })
     }
 
     setFill() {
@@ -493,3 +369,108 @@ class Map extends Component {
 }
 
 export default Map
+
+ // const testPoints = {
+        //     "type": "FeatureCollection",
+        //     "features": [
+        //         {
+        //             "type": "Feature",
+        //             "properties": {},
+        //             "geometry": {
+        //                 "type": "Point",
+        //                 "coordinates": [
+        //                     -4.5703125,
+        //                     40.97989806962013
+        //                 ]
+        //             }
+        //         },
+        //         {
+        //             "type": "Feature",
+        //             "properties": {},
+        //             "geometry": {
+        //                 "type": "Point",
+        //                 "coordinates": [
+        //                     -3.683509826660156,
+        //                     40.41323464818589
+        //                 ]
+        //             }
+        //         },
+        //         {
+        //             "type": "Feature",
+        //             "properties": {},
+        //             "geometry": {
+        //                 "type": "Point",
+        //                 "coordinates": [
+        //                     -3.676643371582031,
+        //                     40.42264446301398
+        //                 ]
+        //             }
+        //         },
+        //         {
+        //             "type": "Feature",
+        //             "properties": {},
+        //             "geometry": {
+        //                 "type": "Point",
+        //                 "coordinates": [
+        //                     -3.7030792236328125,
+        //                     40.423167191915596
+        //                 ]
+        //             }
+        //         },
+        //         {
+        //             "type": "Feature",
+        //             "properties": {},
+        //             "geometry": {
+        //                 "type": "Point",
+        //                 "coordinates": [
+        //                     -3.6958694458007812,
+        //                     40.40251631173469
+        //                 ]
+        //             }
+        //         },
+        //         {
+        //             "type": "Feature",
+        //             "properties": {},
+        //             "geometry": {
+        //                 "type": "Point",
+        //                 "coordinates": [
+        //                     -3.6865997314453125,
+        //                     40.433620916899685
+        //                 ]
+        //             }
+        //         },
+        //         {
+        //             "type": "Feature",
+        //             "properties": {},
+        //             "geometry": {
+        //                 "type": "Point",
+        //                 "coordinates": [
+        //                     -3.7003326416015625,
+        //                     40.434666200029056
+        //                 ]
+        //             }
+        //         },
+        //         {
+        //             "type": "Feature",
+        //             "properties": {},
+        //             "geometry": {
+        //                 "type": "Point",
+        //                 "coordinates": [
+        //                     -3.70513916015625,
+        //                     40.417155564302945
+        //                 ]
+        //             }
+        //         },
+        //         {
+        //             "type": "Feature",
+        //             "properties": {},
+        //             "geometry": {
+        //                 "type": "Point",
+        //                 "coordinates": [
+        //                     -3.6711502075195312,
+        //                     40.4166327886885
+        //                 ]
+        //             }
+        //         }
+        //     ]
+        // }

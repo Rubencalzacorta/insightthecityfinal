@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import mapboxgl from 'mapbox-gl';
 
 import "./MapPageId.css"
+import "./../Home/Home.css"
 
 import Map from "../../UI/maps/Map"
 import MapFilterBar from "../../UI/FilterBar/FilterBar"
@@ -82,16 +84,18 @@ class MapPageId extends Component {
 
                         {this.state.updated ? <Map postFilters={this.postFilters} state={this.state} /> : null}
 
-                        <Col md={3} >
+                        <Col md={3} style={{ height: 800 }}>
+                            <aside className="filters-bar">
+                                <MapFilterBar postFilters={this.postFilters} state={this.state} />
 
-                            <MapFilterBar postFilters={this.postFilters} state={this.state} />
-
-                            <NotesBar loggedInUser={this.props.loggedInUser} postFilters={this.postFilters} state={this.state} />
+                                <NotesBar loggedInUser={this.props.loggedInUser} postFilters={this.postFilters} state={this.state} />
+                                <Button style={{ marginTop: 30 }} variant="outline-info" type="button" onClick={this.updateMap}>save map</Button>
+                                <Link to={`/profile/${this.state.creator}`}> <button type="button" className="home-buttons map-buttons">Back to your profile</button></Link>
+                            </aside>
                         </Col>
 
                     </Row>
 
-                    <Button variant="primary" type="button" onClick={this.updateMap}>save map</Button>
                 </Container>
             </>
         )
