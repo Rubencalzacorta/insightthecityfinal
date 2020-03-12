@@ -270,33 +270,34 @@ class Map extends Component {
             this.map.on('load', () => {
                 this.map.addSource('pointSource', {
                     type: 'geojson',
-                    data: {
-                        "type": "FeatureCollection",
-                        "features": [
-                            {
-                                "type": "Feature",
-                                "properties": {},
-                                "geometry": {
-                                    "type": "Point",
-                                    "coordinates": [
-                                        -3.696212768554688,
-                                        40.42591145200572
-                                    ]
-                                }
-                            },
-                            {
-                                "type": "Feature",
-                                "properties": {},
-                                "geometry": {
-                                    "type": "Point",
-                                    "coordinates": [
-                                        -3.7039375305175777,
-                                        40.404346392451686
-                                    ]
-                                }
-                            }
-                        ]
-                    }
+                    data: this.props.state.searchPoints
+                    // data: {
+                    //     "type": "FeatureCollection",
+                    //     "features": [
+                    //         {
+                    //             "type": "Feature",
+                    //             "properties": {},
+                    //             "geometry": {
+                    //                 "type": "Point",
+                    //                 "coordinates": [
+                    //                     -3.696212768554688,
+                    //                     40.42591145200572
+                    //                 ]
+                    //             }
+                    //         },
+                    //         {
+                    //             "type": "Feature",
+                    //             "properties": {},
+                    //             "geometry": {
+                    //                 "type": "Point",
+                    //                 "coordinates": [
+                    //                     -3.7039375305175777,
+                    //                     40.404346392451686
+                    //                 ]
+                    //             }
+                    //         }
+                    //     ]
+                    // }
                 });
 
 

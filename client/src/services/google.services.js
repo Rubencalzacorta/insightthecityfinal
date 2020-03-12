@@ -22,37 +22,36 @@ export default class GoogleServices {
 
         return this.service.get(`nearbysearch/json?location=40.414295,-3.706348&radius=6000&keyword=${newKeyword}&key=AIzaSyA4kSlF_U7Jn2kZLB6bsUaLlnSqt7UJLL4`)
             .then(response => {
-                console.log(newKeyword)
-                console.log(response)
-                console.log(response.data)
 
-                // const geojson = {
-                //     type: 'FeatureCollection',
-                //     features: []
+                const geojson = {
+                    type: 'FeatureCollection',
+                    features: []
 
-                // }
+                }
 
-                // response.data.results.forEach((elm, idx) => {
+                response.data.results.forEach((elm, idx) => {
 
-                //     let name = elm.name
-                //     let lat = elm.geometry.location.lat
-                //     let lng = elm.geometry.location.lng
+                    let name = elm.name
+                    let lat = elm.geometry.location.lat
+                    let lng = elm.geometry.location.lng
 
-                //     let place = {
-                //         type: 'Feature',
-                //         geometry: {
-                //             type: 'Point',
-                //             coordinates: [lat, lng]
-                //         },
-                //         properties: {
-                //             title: name,
-                //         }
-                //     }
+                    let place = {
+                        type: 'Feature',
+                        geometry: {
+                            type: 'Point',
+                            coordinates: [lat, lng]
+                        },
+                        properties: {
+                            title: name,
+                        }
+                    }
 
-                //     geojson.features.push(place)
-                // })
+                    geojson.features.push(place)
+                })
 
-                // return geojson
+                console.log(geojson)
+
+                return geojson
 
             })
 
