@@ -36,10 +36,10 @@ export default class GoogleServices {
                     let lng = elm.geometry.location.lng
 
                     let place = {
-                        type: 'Feature',
+                        type: "Feature",
                         geometry: {
                             type: 'Point',
-                            coordinates: [lat, lng]
+                            coordinates: [lng, lat]
                         },
                         properties: {
                             title: name,

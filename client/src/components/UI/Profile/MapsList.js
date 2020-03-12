@@ -32,11 +32,11 @@ const MapsTable = (props) => {
                             <th>Ceated</th>
                             <th>Demografics</th>
                             <th>keywords</th>
-                            <th>Add to Project</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {props.list.map((elm, idx) => <Link className="map-table-item" to={`/maps/${elm._id}`}> <MapListItem key={idx} item={elm} /></Link>)}
+                        {props.list.map((elm, idx) => <Link className="map-table-item" to={`/maps/${elm._id}`}> <MapListItem key={idx} removeMap={props.removeMap} item={elm} /></Link>)}
                     </tbody>
                 </Table>
             </div>

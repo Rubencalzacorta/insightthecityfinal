@@ -39,12 +39,12 @@ router.get("/getmap/:id", (req, res, next) => {
 
 router.post("/getmap/:id", (req, res, next) => {
 
-    const { demografic, googleKWords, lng, lat, zoom } = req.body
+    const { googleKWords, lng, lat, zoom, active, searchPoints } = req.body
 
-    MapGraph.findByIdAndUpdate(req.params.id, { demografic, googleKWords, lng, lat, zoom })
+    MapGraph.findByIdAndUpdate(req.params.id, { googleKWords, lng, lat, zoom, active, searchPoints })
 
         .then(foundMap => {
-            // console.log(foundMap)
+            console.log(foundMap)
             res.status(200).json(foundMap)
         })
         .catch(err => console.log("------------------------error buscando el mapa", err))

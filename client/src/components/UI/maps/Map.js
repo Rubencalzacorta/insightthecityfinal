@@ -267,37 +267,27 @@ class Map extends Component {
                 this.setFill()
             });
 
+            //initializing layer of google search points empty to later be updated
             this.map.on('load', () => {
                 this.map.addSource('pointSource', {
                     type: 'geojson',
-                    data: this.props.state.searchPoints
-                    // data: {
-                    //     "type": "FeatureCollection",
-                    //     "features": [
-                    //         {
-                    //             "type": "Feature",
-                    //             "properties": {},
-                    //             "geometry": {
-                    //                 "type": "Point",
-                    //                 "coordinates": [
-                    //                     -3.696212768554688,
-                    //                     40.42591145200572
-                    //                 ]
-                    //             }
-                    //         },
-                    //         {
-                    //             "type": "Feature",
-                    //             "properties": {},
-                    //             "geometry": {
-                    //                 "type": "Point",
-                    //                 "coordinates": [
-                    //                     -3.7039375305175777,
-                    //                     40.404346392451686
-                    //                 ]
-                    //             }
-                    //         }
-                    //     ]
-                    // }
+                    data: {
+                        "type": "FeatureCollection",
+                        "features": [
+                            {
+                                "type": "Feature",
+                                "properties": {},
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates": [
+                                        0,
+                                        0
+                                    ]
+                                }
+                            },
+
+                        ]
+                    }
                 });
 
 
@@ -360,11 +350,10 @@ class Map extends Component {
     componentDidUpdate() {
 
 
-
         this.setFill()
-        // console.log(this.props.state.searchPoints)
 
-        // const searchData = this.props.state.searchPoints
+        this.map.getSource('pointSource').setData(this.props.state.searchPoints);
+
     }
 
     setFill() {

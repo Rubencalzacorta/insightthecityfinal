@@ -12,6 +12,7 @@ import MapList from "../../UI/Profile/MapsList"
 import ProjectList from "../../UI/Profile/ProjectList"
 
 import UserServices from "../../../services/user.services"
+import MapServices from "../../../services/maps.services"
 
 class Profile extends Component {
 
@@ -23,6 +24,7 @@ class Profile extends Component {
             showList: "maps"
         }
         this.UserServices = new UserServices()
+        this.MapServices = new MapServices()
     }
 
     componentDidMount = () => this.getUser()
@@ -41,6 +43,8 @@ class Profile extends Component {
     closeModal = () => this.setState({ showModal: false })
 
     openModal = () => this.setState({ showModal: true })
+
+    removeMap = (id) => this.MapServices.removeMap(id)
 
 
     render() {
@@ -70,7 +74,7 @@ class Profile extends Component {
                         </div>
 
                         {this.state.showList === "maps" ?
-                            <MapList list={this.state.user.maps} />
+                            <MapList list={this.state.user.maps} removeMap={this.removeMap} />
                             :
                             <ProjectList list={this.state.user.projects} />
                         }
