@@ -7,6 +7,8 @@ const uploader = require('../configs/cloudinary.configs');
 
 router.post('/upload', uploader.single("imageUrl"), (req, res, next) => {
 
+    console.log("llego la foto")
+
     if (!req.file) {
         next(new Error('No file uploaded!'));
         return;

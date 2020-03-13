@@ -6,7 +6,7 @@ const userSchema = new Schema({
 
   password: String,
 
-  imageURL: String,
+  imageUrl: String,
 
   maps: [{
     type: Schema.Types.ObjectId,

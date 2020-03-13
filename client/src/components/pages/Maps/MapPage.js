@@ -35,7 +35,7 @@ class MapPage extends Component {
             lat: 40.4115,
             zoom: 11,
             notes: [],
-            searchPoints: {}
+            searchPoints: null
 
         }
         this.UserServices = new UserServices()
@@ -75,7 +75,7 @@ class MapPage extends Component {
             <>
                 <Container>
                     <Row>
-                        <Map postFilters={this.postFilters} />
+                        {this.state ? <Map postFilters={this.postFilters} state={this.state} /> : "loading"}
                         <Col md={3} style={{ height: 800 }}>
 
                             <aside className="filters-bar">

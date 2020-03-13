@@ -15,7 +15,7 @@ const Note = require("../models/Note");
 
 router.post("/create", (req, res, next) => {
 
-    MapGraph.create({ ...req.body })
+    MapGraph.create({ ...req.body, creator: req.user.id })
         .then(newMap => {
             console.log(newMap)
             res.status(200).json(newMap)
@@ -41,7 +41,7 @@ router.post("/getmap/:id", (req, res, next) => {
 
     const { googleKWords, lng, lat, zoom, active, searchPoints } = req.body
 
-    MapGraph.findByIdAndUpdate(req.params.id, { googleKWords, lng, lat, zoom, active, searchPoints })
+    MapGraph.findByIdAndUpdate(req.params.id, { googleKWords, lng, lat, zoom, active, searchPoints }, { new: true })
 
         .then(foundMap => {
             console.log(foundMap)
@@ -66,6 +66,12 @@ router.post("/addnote", (req, res, next) => {
 
 })
 
+
+router.post("/removemap", (req, res, next) => {
+    MapGraph.findByIdAndDelete(req.body.id)
+        .then(deletedMap => res.status(200).json(deletedMap))
+        .catch(err => console.log("error eliminando el mapa", err))
+})
 
 // router.get("/getusermaps", (req, res, next) => {
 

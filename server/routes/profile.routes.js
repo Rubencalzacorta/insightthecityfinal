@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const MapGraph = require("../models/MapGraph");
+const Project = require("../models/Publication")
 
 
 router.get("/:id", (req, res, next) => {
@@ -19,8 +20,12 @@ router.get("/:id", (req, res, next) => {
 router.post("/update", (req, res, next) => {
     console.log(req.body)
 
-    User.findByIdAndUpdate(req.body._id, req.body)
-        .then(newUser => res.status(200).json(newUser))
+    User.findByIdAndUpdate(req.body._id, req.body, { new: true })
+        .then(updatedUser => {
+            console.log(updatedUser)
+            User.findById(updatedUser._id).populate("maps").populate("projects")
+        })
+        .then(populatedUser => res.status(200).json(populatedUser))
         .catch(err => console.log("error retrieving the user data", err))
 })
 
@@ -41,7 +46,7 @@ router.post("/addproject", (req, res, next) => {
         }
     }
 
-    User.findByIdAndUpdate(req.user.id, newProject)
+    User.findByIdAndUpdate(req.user.id, newProject, { new: true })
         .then(updatedUser => res.status(200).json(updatedUser))
         .catch(err => console.log("error retrieving the user data", err))
 })

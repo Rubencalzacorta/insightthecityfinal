@@ -196,7 +196,8 @@ class Map extends Component {
             lng: this.props.state ? this.props.state.lng : -3.70,
             lat: this.props.state ? this.props.state.lat : 40.4115,
             zoom: this.props.state ? this.props.state.zoom : 11,
-            active: options[0]
+            active: options[0],
+            searchPoints: this.props.state ? this.props.state.searchPoints : null
 
         }
         this.UserServices = new UserServices()
@@ -228,7 +229,7 @@ class Map extends Component {
 
 
         if (this.props.state) {
-
+            console.log("if")
             this.map = new mapboxgl.Map({
                 container: this.mapRef.current,
                 style: 'mapbox://styles/mapbox/light-v9',
@@ -287,6 +288,7 @@ class Map extends Component {
 
 
             if (this.props.state.searchPoints) {
+                console.log("pasa por el if interno")
                 this.map.on('load', () => {
                     this.map.addSource('pointSource', {
                         type: 'geojson',
@@ -306,11 +308,12 @@ class Map extends Component {
 
                 })
             } else {
+                console.log("paso por el else interno")
 
                 this.map.on('load', () => {
                     this.map.addSource('pointSource', {
                         type: 'geojson',
-                        data: emptyjson
+                        data: this.state.searchPoints
 
                     });
 
@@ -332,6 +335,8 @@ class Map extends Component {
 
             //when a map is new, there are no props and the map has initial coordinates
         } else {
+
+            console.log("else")
             this.map = new mapboxgl.Map({
                 container: this.mapRef.current,
                 style: 'mapbox://styles/mapbox/light-v9',
@@ -412,12 +417,13 @@ class Map extends Component {
     componentDidUpdate() {
 
 
-        this.setFill()
 
         console.log("actualizado estado", this.props.state)
         // TODO si vienen resultados en vacio, no se van a actualizar. 
-        this.props.state.searchPoints && this.map.getSource('pointSource').setData(this.props.state.searchPoints);
+        this.props.state.searchPoints && this.map.getSource('pointSource').setData(this.props.state.searchPoints)
 
+
+        this.setFill()
     }
 
     setFill() {
@@ -425,7 +431,7 @@ class Map extends Component {
         this.map.setPaintProperty('countries', 'fill-color', {
             property,
             stops
-        });
+        })
     }
 
     render() {
