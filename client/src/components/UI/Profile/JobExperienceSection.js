@@ -9,6 +9,7 @@ import React, { Component } from 'react'
 
 // import GoogleServices from "../../../services/google.services"
 
+import "./JobExperienceSection.css"
 
 class JobExperienceSection extends Component {
 
@@ -31,15 +32,18 @@ class JobExperienceSection extends Component {
                 {this.props.userDetails ?
 
 
-                    <article>
-                        <h3>Professional Overview</h3>
-                        <h6>{experienceOverview}</h6>
+                    <article style={{ marginTop: 70 }}>
+                        <div className="profile-info-box">
+                            <h3>Professional <br /> Overview</h3>
+                            <h5>{experienceOverview}</h5>
+                        </div>
 
-                        <h3>Last Relevant Experience</h3>
-                        <h5>{role} at {company}</h5>
-                        <p>From {startDate} to {endDate} </p>
-                        <h5>{jobDescription}</h5>
-
+                        <div className="profile-info-box">
+                            <h3>Last Relevant<br />  Experience</h3>
+                            <h5>{role} at {company}</h5>
+                            <p>From {startDate} to {endDate} </p>
+                            <h6>{jobDescription}</h6>
+                        </div>
                     </article>
 
 

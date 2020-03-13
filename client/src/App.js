@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 import { Switch, Route, Redirect } from 'react-router-dom'
-// , Redirect 
-
-// import Vectors from "./components/UI/maps/mergingFile"
-
 
 import AuthServices from "./services/auth.services"
 
@@ -64,9 +60,6 @@ class App extends Component {
 
 
   render() {
-
-    console.log(this.state.loggedInUser)
-
     return (
       <>
 
@@ -78,8 +71,8 @@ class App extends Component {
           <Route path="/signup" render={props => <Signup setTheUser={this.setTheUser} {...props} />} />
           <Route path="/profile/:id" render={props => this.nullRedirect(this.state.loggedInUser, props)} />
 
-          <Route path="/maps/create" render={props => <MapPage loggedInUser={this.state.loggedInUser} {...props} />} />
-          <Route path="/maps/:id" render={props => <MapPageId loggedInUser={this.state.loggedInUser} {...props} />} />
+          <Route path="/maps/create" render={props => this.state.loggedInUser ? <MapPage loggedInUser={this.state.loggedInUser} {...props} /> : "loading"} />
+          <Route path="/maps/:id" render={props => this.state.loggedInUser ? <MapPageId loggedInUser={this.state.loggedInUser} {...props} /> : "loading"} />
           <Route path="/projects/create" render={props => this.state.loggedInUser ? <NewProjectForm loggedInUser={this.state.loggedInUser} {...props} /> : <Redirect to="/login"></Redirect>} />
           <Route path="/projects/:id" render={props => this.state.loggedInUser ? <Project loggedInUser={this.state.loggedInUser} {...props} /> : <Redirect to="/login"></Redirect>} />
 

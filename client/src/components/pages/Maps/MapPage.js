@@ -8,7 +8,7 @@ import NotesBar from "../../UI/Notes/NotesBar"
 
 
 import Container from 'react-bootstrap/Container'
-// import Col from 'react-bootstrap/Col'
+import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 // import Modal from 'react-bootstrap/Modal'
 import { Link } from 'react-router-dom'
@@ -28,13 +28,14 @@ class MapPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            creator: "",
-            demografic: "",
+            creator: this.props.loggedInUser._id,
+            active: [],
             googleKWords: "",
-            lng: undefined,
-            lat: undefined,
-            zoom: undefined,
-            notes: []
+            lng: -3.70,
+            lat: 40.4115,
+            zoom: 11,
+            notes: [],
+            searchPoints: {}
 
         }
         this.UserServices = new UserServices()
@@ -55,7 +56,7 @@ class MapPage extends Component {
             .then(addedMap => {
 
                 console.log(addedMap)
-                this.props.history.push(`/maps/${addedMap._id}`)
+                this.props.history.push(`/profile/${this.state.creator}`)
             })
 
     }
@@ -74,16 +75,22 @@ class MapPage extends Component {
             <>
                 <Container>
                     <Row>
-
-                        <MapFilterBar postFilters={this.postFilters} />
-
                         <Map postFilters={this.postFilters} />
+                        <Col md={3} style={{ height: 800 }}>
 
-                        <NotesBar loggedInUser={this.props.loggedInUser} />
+                            <aside className="filters-bar">
+                                <MapFilterBar postFilters={this.postFilters} state={this.state} />
 
+                                <NotesBar loggedInUser={this.props.loggedInUser} />
+
+                                <Button style={{ marginTop: 30 }} variant="outline-info" type="button" onClick={this.postMap}>Create map</Button>
+
+                                <Link to={`/profile/${this.state.creator}`}> <button type="button" className="home-buttons map-buttons">Back to your profile</button></Link>
+
+                            </aside>
+                        </Col>
                     </Row>
 
-                    <Button variant="primary" type="button" onClick={this.postMap}>save map</Button>
                 </Container>
             </>
         )

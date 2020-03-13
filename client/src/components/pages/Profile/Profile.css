@@ -1,0 +1,39 @@
+.profile-section{
+    background-color: rgb(251, 247, 247);
+    width: 100%;
+    padding: 20px;
+    padding-top: 50px;
+}
+
+.profile-toggle-box{
+    margin-top: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+
+.profile-toggle-button{
+    width: 500%;
+   text-align: center;
+   padding: 20px 0;
+   border: 1px solid rebeccapurple;
+   color: rebeccapurple;
+   font-size: 1.2rem;
+}
+.profile-toggle-button:hover{
+   color: whitesmoke;
+   background-color: rebeccapurple;
+ 
+}
+
+.profile-toggle-button.active{
+    width: 500%;
+   text-align: center;
+   padding: 20px 0;
+   border: 1px solid rebeccapurple;
+   color: whitesmoke;
+   background-color: rebeccapurple;
+   font-size: 1.2rem;
+}

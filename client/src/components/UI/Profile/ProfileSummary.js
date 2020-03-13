@@ -32,7 +32,7 @@ class ProfileSummary extends Component {
 
                 {this.props.userDetails ?
 
-                    <Col md={3}>
+                    <Col md={3} style={{ paddingRight: 0 }}>
 
                         <Card>
                             <Card.Img className="profile-pic" variant="top" src={imageUrl ? imageUrl : "http://getdrawings.com/free-icon/user-icon-67.png"} />

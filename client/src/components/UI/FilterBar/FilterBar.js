@@ -36,12 +36,16 @@ class MapFilterBar extends Component {
 
     initialState = () => {
 
+        console.log(this.props.state)
+
         this.props.state &&
 
             this.setState({
 
                 googleKWords: this.props.state.googleKWords,
                 searchPoints: this.props.state.searchPoints,
+
+
 
             })
 
@@ -72,23 +76,27 @@ class MapFilterBar extends Component {
     }
     render() {
 
+
+
         return (
 
             <>
 
-                <div className="filter-box">
+                {this.props.state ?
 
-                    <Form id="google-search-form" onSubmit={this.handleSubmit}>
+                    <div className="filter-box">
 
-                        <Form.Group>
-                            <Form.Label>search</Form.Label>
-                            <Form.Control type="text" name="googleKWords" onChange={this.handleChange} placeholder="search for keywords" />
-                        </Form.Group>
+                        <Form id="google-search-form" onSubmit={this.handleSubmit}>
 
-                        <Button variant="outline-secondary" type="button" onClick={this.searchPlaces} >Search</Button>
-                    </Form>
-                </div>
+                            <Form.Group>
+                                <Form.Label>search</Form.Label>
+                                <Form.Control type="text" value={this.state.googleKWords} name="googleKWords" onChange={this.handleChange} placeholder="search for keywords" />
+                            </Form.Group>
 
+                            <Button variant="outline-secondary" type="button" onClick={this.searchPlaces} >Search</Button>
+                        </Form>
+                    </div>
+                    : "loading"}
             </>
         )
     }

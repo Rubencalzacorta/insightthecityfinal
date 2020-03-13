@@ -2,8 +2,8 @@ import React from 'react'
 import MapListItem from "./MapListItem"
 import Table from 'react-bootstrap/Table'
 
-import { Link } from 'react-router-dom'
 
+import ProjectListItem from "./ProjectListItem"
 
 import UserServices from "../../../services/user.services"
 import MapServices from "../../../services/maps.services"
@@ -20,17 +20,19 @@ const ProjectList = (props) => {
         props.list ?
             <div>
 
-                <h2>Project list</h2>
-                <Table striped bordered hover>
+
+                <Table hover>
                     <thead>
                         <tr>
                             <th>Ceated</th>
                             <th>Name</th>
                             <th>Opportunity</th>
+                            <th>To Project</th>
+                            <th>Remove</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {props.list.map((elm, idx) => <Link className="project-table-item" to={`/projects/${elm._id}`}> <MapListItem key={idx} item={elm} /></Link>)}
+                        {props.list.map((elm, idx) => <ProjectListItem key={idx} item={elm} />)}
                     </tbody>
                 </Table>
             </div>

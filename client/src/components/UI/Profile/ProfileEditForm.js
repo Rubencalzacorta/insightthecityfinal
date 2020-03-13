@@ -7,9 +7,6 @@ import AuthServices from "../../../services/auth.services"
 import FilesServices from "../../../services/files.services"
 import UserServices from "../../../services/user.services"
 
-// import JobExperienceCard from "./JobExperience"
-
-
 class ProfileEditForm extends Component {
 
     constructor(props) {
@@ -28,7 +25,9 @@ class ProfileEditForm extends Component {
     }
 
     finishAction = () => {
+        this.props.updateState(this.state.user)
         this.props.closeModal()
+
     }
 
     postUser = () => {
@@ -55,9 +54,9 @@ class ProfileEditForm extends Component {
         this.FilesServices.handleUpload(uploadData)
             .then(response => {
                 console.log('Subida de archivo finalizada! La URL de Cloudinray es: ', response.secure_url)
-                this.setState({ ...this.state, imageUrl: response.secure_url })
+                this.setState({ user: { ...this.state.user, imageUrl: response.secure_url } })
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log("error subiendo la foto", err))
     }
 
     render() {
@@ -136,52 +135,3 @@ class ProfileEditForm extends Component {
 }
 
 export default ProfileEditForm
-
-
-
-    // addExperience = () => {
-    //     let workExperienceCopy = [...this.state.workExperience]
-    //     let newWorkExperience = {
-    //         company: "",
-    //         role: "",
-    //         startDate: "",
-    //         endDate: "",
-    //         description: ""
-    //     }
-    //     workExperienceCopy.push(newWorkExperience)
-    //     this.setState({
-    //         workExperience: workExperienceCopy
-    //     })
-
-    // }
-
-
-
-
-
-
-
-// {
-//     this.state.workExperience.length > 0 && this.state.workExperience.map((elm, idx) =>
-
-        // <Form.Group>
-        //     <Form.Label>Work experience</Form.Label>
-        //     <Form.Text className="text-muted">Company</Form.Text>
-        //     <Form.Control type="text" name="company" value={elm.company} onChange={this.handleChange} />
-        //     <Form.Text className="text-muted">Role</Form.Text>
-        //     <Form.Control type="text" name="role" value={elm.role} onChange={this.handleChange} />
-        //     <Form.Text className="text-muted">Start date</Form.Text>
-        //     <Form.Control type="date" name="startDate" value={elm.startDate} onChange={this.handleChange} />
-        //     <Form.Text className="text-muted">End date</Form.Text>
-        //     <Form.Control type="date" name="endDate" value={elm.endDate} onChange={this.handleChange} />
-        //     <Form.Text className="text-muted">Description</Form.Text>
-        //     <Form.Control type="text" name="jobDescription" value={elm.jobDescription} onChange={this.handleChange} />
-
-        //     <hr />
-        // </Form.Group>
-
-//     )
-// }
-
-// <Button variant="dark" type="button" onClick={this.addExperience}>Add a Job experience</Button>
-

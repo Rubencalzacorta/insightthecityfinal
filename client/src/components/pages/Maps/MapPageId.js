@@ -65,6 +65,18 @@ class MapPageId extends Component {
         this.setState({ ...this.setState, ...filters, creator: this.props.loggedInUser._id })
     }
 
+    postMap = () => {
+
+        this.MapServices.postMap(this.state)
+            .then(newMap => this.UserServices.addMap(newMap))
+            .then(addedMap => {
+
+                console.log(addedMap)
+                this.props.history.push(`/maps/${addedMap._id}`)
+            })
+
+    }
+
 
     updateMap = () => {
 
@@ -79,24 +91,32 @@ class MapPageId extends Component {
         return (
 
             <>
-                <Container className="map-wrapper" fluid={true}>
-                    <Row>
+                {this.state.updated ?
 
-                        {this.state.updated ? <Map postFilters={this.postFilters} state={this.state} /> : null}
+                    <Container className="map-wrapper" fluid={true}>
+                        <Row>
 
-                        <Col md={3} style={{ height: 800 }}>
-                            <aside className="filters-bar">
-                                <MapFilterBar postFilters={this.postFilters} state={this.state} />
+                            {this.state.updated ? <Map postFilters={this.postFilters} state={this.state} /> : null}
 
-                                <NotesBar loggedInUser={this.props.loggedInUser} postFilters={this.postFilters} state={this.state} />
-                                <Button style={{ marginTop: 30 }} variant="outline-info" type="button" onClick={this.updateMap}>save map</Button>
-                                <Link to={`/profile/${this.state.creator}`}> <button type="button" className="home-buttons map-buttons">Back to your profile</button></Link>
-                            </aside>
-                        </Col>
+                            <Col md={3} style={{ height: 800 }}>
+                                <aside className="filters-bar">
+                                    <MapFilterBar postFilters={this.postFilters} state={this.state} />
 
-                    </Row>
+                                    <NotesBar loggedInUser={this.props.loggedInUser} postFilters={this.postFilters} state={this.state} />
 
-                </Container>
+                                    <Button style={{ marginTop: 30 }} variant="outline-info" type="button" onClick={this.updateMap}>save map</Button>
+
+                                    <Link to={`/profile/${this.state.creator}`}> <button type="button" className="home-buttons map-buttons">Back to your profile</button></Link>
+
+                                </aside>
+                            </Col>
+
+                        </Row>
+
+                    </Container>
+
+                    : "loading"
+                }
             </>
         )
     }

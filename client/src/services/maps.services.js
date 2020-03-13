@@ -18,6 +18,10 @@ class mapServices {
 
     addNotes = objectToUpdate => this.service.post("/addnote", objectToUpdate).then(response => response.data)
 
+    removeMap = id => this.service.post("/removemap", id).then(response => response.data)
+
+
+
     // this.service.get("/getmap", mapId).then(response => response.data)
 
 

@@ -8,11 +8,6 @@ import data from "./madridVectors.json"
 import demografics from "./demografia.json"
 
 
-// import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
-// import Row from 'react-bootstrap/Row'
-// import Modal from 'react-bootstrap/Modal'
-
 
 import UserServices from "../../../services/user.services"
 
@@ -25,7 +20,7 @@ const options = [{
     description: 'Neighborhood area',
     property: 'Area(Hab)',
     stops: [
-        [2106.38, "rgba(79, 238, 203, 0.7)"], [4187.88, "rgba(79, 238, 203, 0.2)"], [6269.37, "rgba(79, 238, 203, 0.28)"], [8350.87, "rgba(79, 238, 203, 0.35)"], [10432.36, "rgba(79, 238, 203, 0.40)"], [12513.86, "rgba(79, 238, 203, 0.47)"], [14595.35, "rgba(79, 238, 203, 0.55)"], [16676.85, "rgba(79, 238, 203, 0.62)"], [18758.34, "rgba(79, 238, 203, 0.69)"], [28137, "rgba(79, 238, 203, 0.74)"]
+        [2106.38, "rgba(79, 238, 203, 0.15)"], [4187.88, "rgba(79, 238, 203, 0.2)"], [6269.37, "rgba(79, 238, 203, 0.28)"], [8350.87, "rgba(79, 238, 203, 0.35)"], [10432.36, "rgba(79, 238, 203, 0.40)"], [12513.86, "rgba(79, 238, 203, 0.47)"], [14595.35, "rgba(79, 238, 203, 0.55)"], [16676.85, "rgba(79, 238, 203, 0.62)"], [18758.34, "rgba(79, 238, 203, 0.69)"], [28137, "rgba(79, 238, 203, 0.74)"]
     ]
 }, {
     name: 'Density',
@@ -219,23 +214,26 @@ class Map extends Component {
             }
         }
 
-
     }
 
     sendFilters = () => this.props.postFilters(this.state)
 
 
+
+
     componentDidMount() {
+
 
         this.mergedata()
 
 
         if (this.props.state) {
+
             this.map = new mapboxgl.Map({
                 container: this.mapRef.current,
                 style: 'mapbox://styles/mapbox/light-v9',
-                center: [this.props.state.lng, this.props.state.lat],
-                zoom: this.props.state.zoom
+                center: [this.state.lng, this.state.lat],
+                zoom: this.state.zoom
             })
 
             this.map.on('move', () => {
@@ -268,50 +266,77 @@ class Map extends Component {
             });
 
             //initializing layer of google search points empty to later be updated
-            this.map.on('load', () => {
-                this.map.addSource('pointSource', {
-                    type: 'geojson',
-                    data: {
-                        "type": "FeatureCollection",
-                        "features": [
-                            {
-                                "type": "Feature",
-                                "properties": {},
-                                "geometry": {
-                                    "type": "Point",
-                                    "coordinates": [
-                                        0,
-                                        0
-                                    ]
-                                }
-                            },
 
-                        ]
-                    }
-                });
+            const emptyjson = {
+                "type": "FeatureCollection",
+                "features": [
+                    {
+                        "type": "Feature",
+                        "properties": {},
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [
+                                0,
+                                0
+                            ]
+                        }
+                    },
+
+                ]
+            }
 
 
-                this.map.addLayer({
-                    id: 'points',
-                    type: 'circle',
-                    source: 'pointSource',
+            if (this.props.state.searchPoints) {
+                this.map.on('load', () => {
+                    this.map.addSource('pointSource', {
+                        type: 'geojson',
+                        data: this.props.state.searchPoints
+
+                    });
+
+
+                    this.map.addLayer({
+                        id: 'points',
+                        type: 'circle',
+                        source: 'pointSource',
+                    })
+
+                    this.setFill()
+
+
                 })
+            } else {
 
-                this.setFill()
+                this.map.on('load', () => {
+                    this.map.addSource('pointSource', {
+                        type: 'geojson',
+                        data: emptyjson
+
+                    });
 
 
-            })
+                    this.map.addLayer({
+                        id: 'points',
+                        type: 'circle',
+                        source: 'pointSource',
+                    })
+
+                    this.setFill()
+
+
+
+                })
+            }
 
 
 
             //when a map is new, there are no props and the map has initial coordinates
         } else {
-
             this.map = new mapboxgl.Map({
                 container: this.mapRef.current,
                 style: 'mapbox://styles/mapbox/light-v9',
-                center: [this.state.lng, this.state.lat],
-                zoom: this.state.zoom
+                center: [-3.70, 40.4115],
+                zoom: 11
             })
 
 
@@ -342,9 +367,46 @@ class Map extends Component {
                 this.setFill()
             });
 
+
+            const emptyjson = {
+                "type": "FeatureCollection",
+                "features": [
+                    {
+                        "type": "Feature",
+                        "properties": {},
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [
+                                0,
+                                0
+                            ]
+                        }
+                    },
+
+                ]
+            }
+
+            this.map.on('load', () => {
+                this.map.addSource('pointSource', {
+                    type: 'geojson',
+                    data: emptyjson
+
+                });
+
+
+                this.map.addLayer({
+                    id: 'points',
+                    type: 'circle',
+                    source: 'pointSource',
+                })
+
+                this.setFill()
+
+
+            })
+
         }
     }
-
 
 
     componentDidUpdate() {
@@ -352,7 +414,9 @@ class Map extends Component {
 
         this.setFill()
 
-        this.map.getSource('pointSource').setData(this.props.state.searchPoints);
+        console.log("actualizado estado", this.props.state)
+        // TODO si vienen resultados en vacio, no se van a actualizar. 
+        this.props.state.searchPoints && this.map.getSource('pointSource').setData(this.props.state.searchPoints);
 
     }
 

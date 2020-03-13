@@ -8,10 +8,8 @@ import Row from 'react-bootstrap/Row'
 
 import ProjectEditForm from "../../UI/Projects/ProjectEditForm"
 import ProjectInfoBox from "../../UI/Projects/ProjectInfoBox"
-import TeamBox from "../../UI/Projects/TeamBox"
 import TeamMemberSummary from "../../UI/Projects/TeamMemberSummary"
 
-import UserServices from "../../../services/user.services"
 import ProjectServices from "../../../services/project.services"
 
 
@@ -55,7 +53,6 @@ class Project extends Component {
         // console.log(this.state)
         const { name, proposal, opportunity, team } = this.state.project
 
-        console.log(team)
         return (
 
             this.props ?

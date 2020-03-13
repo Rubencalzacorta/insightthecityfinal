@@ -1,21 +1,24 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
-// onChange = () => console.log("LO CAMBIARON")
+
 
 const MapListItem = (props) => {
 
+    // removeMapnow = () => {
+    //     props.removeMap(props.item._id)
+    // }
+
+    // onClick = { removeMapnow }
 
     return (
 
         <tr>
             <td>{props.item.created_at}</td>
             <td>{props.item.googleKWords}</td>
-            <td>{props.item.demografic}</td>
-
-            <td> <button onClick={props.removeMap(props.item._id)}>Remove</button>
-            </td>
-
+            <td> <Link className="map-table-item" to={`/maps/${props.item._id}`}>to Map</Link></td>
+            <td> <button >Remove</button></td>
         </tr>
 
     )
