@@ -6,6 +6,8 @@ import Container from 'react-bootstrap/Container'
 
 import AuthServices from "../../../../services/auth.services"
 
+import "./login.css"
+
 class Login extends Component {
     constructor(props) {
         super(props)
@@ -39,21 +41,24 @@ class Login extends Component {
 
     render() {
         return (
-            <Container>
+            <Container style={{ height: 900 }}>
+                <section className="login-section">
+                    <article className="auth-box">
+                        <h1>Log In</h1>
 
-                <h1>Log In</h1>
-
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Group>
-                        <Form.Label>Username</Form.Label>
-                        <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-                    </Form.Group>
-                    <Button variant="dark" type="submit">Log in</Button>
-                </Form>
+                        <Form onSubmit={this.handleSubmit}>
+                            <Form.Group>
+                                <Form.Label>Username</Form.Label>
+                                <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                            </Form.Group>
+                            <Button variant="outline-info" type="submit">Log in</Button>
+                        </Form>
+                    </article>
+                </section>
             </Container>
 
         )

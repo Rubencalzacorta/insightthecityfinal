@@ -6,6 +6,9 @@ import Container from 'react-bootstrap/Container'
 
 import AuthServices from '../../../../services/auth.services'
 
+import "../login/login.css"
+
+
 class Signup extends Component {
 
     constructor(props) {
@@ -48,22 +51,24 @@ class Signup extends Component {
 
         return (
 
-            <Container>
+            <Container style={{ height: 900 }}>
+                <section className="login-section">
+                    <article className="auth-box">
+                        <h1>Signup</h1>
+                        <Form onSubmit={this.handleSubmit}>
+                            <Form.Group>
+                                <Form.Label>Username</Form.Label>
+                                <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                            </Form.Group>
 
-                <h1>Signup!!</h1>
-
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Group>
-                        <Form.Label>Username</Form.Label>
-                        <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-                    </Form.Group>
-
-                    <Button variant="dark" type="submit">Signup</Button>
-                </Form>
+                            <Button variant="outline-info" type="submit">Signup</Button>
+                        </Form>
+                    </article>
+                </section>
             </Container>
 
         )

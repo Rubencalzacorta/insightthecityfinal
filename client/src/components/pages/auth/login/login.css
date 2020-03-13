@@ -1,0 +1,24 @@
+.login-section{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.auth-box{
+
+    height: 60%;
+    width: 60%;
+    background-color: whitesmoke;
+    padding: 100px;
+    margin:auto;
+    padding-right: 200px;
+
+}
+.auth-box h1{
+    font-size: 4rem;
+    margin-bottom: 10%;
+}
+
+
