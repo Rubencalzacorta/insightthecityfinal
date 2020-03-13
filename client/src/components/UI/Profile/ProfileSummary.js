@@ -32,8 +32,8 @@ class ProfileSummary extends Component {
 
                 {this.props.userDetails ?
 
-                    <article className="prof-summary">
-                        <Col md={3} style={{ paddingRight: 0 }}>
+                    <Col md={3} style={{ paddingRight: 0 }}>
+                        <article className="prof-summary">
 
                             <Card>
                                 <Card.Img className="profile-pic" variant="top" src={imageUrl ? imageUrl : "http://getdrawings.com/free-icon/user-icon-67.png"} />
@@ -60,8 +60,8 @@ class ProfileSummary extends Component {
 
                             </Card>
 
-                        </Col>
-                    </article>
+                        </article>
+                    </Col>
 
                     : <h6>loading</h6>}
             </>
