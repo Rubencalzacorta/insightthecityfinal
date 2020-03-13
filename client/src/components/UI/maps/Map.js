@@ -417,12 +417,7 @@ class Map extends Component {
     componentDidUpdate() {
 
 
-
-        console.log("actualizado estado", this.props.state)
-        // TODO si vienen resultados en vacio, no se van a actualizar. 
         this.props.state.searchPoints && this.map.getSource('pointSource').setData(this.props.state.searchPoints)
-
-
         this.setFill()
     }
 

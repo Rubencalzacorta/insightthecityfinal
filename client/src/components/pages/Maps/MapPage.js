@@ -29,7 +29,6 @@ class MapPage extends Component {
         super(props)
         this.state = {
             creator: this.props.loggedInUser._id,
-            active: [],
             googleKWords: "",
             lng: -3.70,
             lat: 40.4115,
