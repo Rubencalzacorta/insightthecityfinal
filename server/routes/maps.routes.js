@@ -73,33 +73,4 @@ router.post("/removemap", (req, res, next) => {
         .catch(err => console.log("error eliminando el mapa", err))
 })
 
-// router.get("/getusermaps", (req, res, next) => {
-
-//     console.log(req)
-
-//     // MapGraph.findById(req.body)
-//     //     .then(foundMap => {
-//     //         console.log(foundMap)
-//     //         res.status(200).json(foundMap)
-
-//     //     })
-//     //     .catch(err => console.log("error buscando el mapa", err))
-
-
-// })
-
-
-
-
-
-
-
-// router.post("/update", (req, res, next) => {
-//     console.log(req.body)
-
-//     User.findByIdAndUpdate(req.body._id, req.body)
-//         .then(newUser => res.status(200).json(newUser))
-//         .catch(err => console.log("error retrieving the user data", err))
-// })
-
 module.exports = router;

@@ -48,7 +48,10 @@ class Profile extends Component {
 
     openModal = () => this.setState({ showModal: true })
 
-    removeMap = (id) => this.MapServices.removeMap(id)
+    removeMap = (id) => {
+        this.MapServices.removeMap(id)
+        this.getUser()
+    }
 
 
     render() {
