@@ -22,6 +22,14 @@ import Button from 'react-bootstrap/Button';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoicnViZW5jYWx6YWNvcnRhIiwiYSI6ImNrNmtubnJyaTA1dGozbGxrcDF4M3BpbjQifQ.MQlFgG0opOtC1mDZD5yPRA';
 
+const option = {
+    name: 'Area',
+    description: 'Neighborhood area',
+    property: 'Area(Hab)',
+    stops: [
+        [2106.38, "rgba(79, 238, 203, 0.15)"], [4187.88, "rgba(79, 238, 203, 0.2)"], [6269.37, "rgba(79, 238, 203, 0.28)"], [8350.87, "rgba(79, 238, 203, 0.35)"], [10432.36, "rgba(79, 238, 203, 0.40)"], [12513.86, "rgba(79, 238, 203, 0.47)"], [14595.35, "rgba(79, 238, 203, 0.55)"], [16676.85, "rgba(79, 238, 203, 0.62)"], [18758.34, "rgba(79, 238, 203, 0.69)"], [28137, "rgba(79, 238, 203, 0.74)"]
+    ]
+}
 
 class MapPage extends Component {
 
@@ -34,6 +42,7 @@ class MapPage extends Component {
             lat: 40.4115,
             zoom: 11,
             notes: [],
+            active: option,
             searchPoints: null
 
         }
@@ -61,14 +70,9 @@ class MapPage extends Component {
     }
 
 
-
     render() {
 
-        // this.props.loggedInUser._id ? this.setState({ ...this.setState, creator: this.props.loggedInUser._id }) : null
 
-
-        // console.log(this.props)
-        // console.log("this is the logged in id ", this.props.loggedInUser._id)
         return (
 
             <>

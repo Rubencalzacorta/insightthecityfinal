@@ -190,7 +190,7 @@ class Map extends Component {
             lat: this.props.state ? this.props.state.lat : 40.4115,
             zoom: this.props.state ? this.props.state.zoom : 11,
             active: this.props.state.active ? this.props.state.active : options[0],
-            searchPoints: this.props.state ? this.props.state.searchPoints : null
+            searchPoints: this.props.state.searchPoints ? this.props.state.searchPoints : null
 
         }
         this.UserServices = new UserServices()
@@ -209,10 +209,9 @@ class Map extends Component {
 
     }
 
-    sendFilters = () => this.props.postFilters(this.state)
+    sendFilters = () => this.props.postFilters({ ...this.state, searchPoints: this.props.state.searchPoints })
 
     componentDidMount() {
-
         this.mergedata()
 
         if (this.props.state) {
@@ -252,26 +251,6 @@ class Map extends Component {
 
                 this.setFill()
             });
-
-            //initializing layer of google search points empty to later be updated
-
-            // const emptyjson = {
-            //     "type": "FeatureCollection",
-            //     "features": [
-            //         {
-            //             "type": "Feature",
-            //             "properties": {},
-            //             "geometry": {
-            //                 "type": "Point",
-            //                 "coordinates": [
-            //                     0,
-            //                     0
-            //                 ]
-            //             }
-            //         },
-
-            //     ]
-            // }
 
             if (this.props.state.searchPoints) {
                 console.log("pasa por el if interno")
@@ -316,7 +295,6 @@ class Map extends Component {
 
                 })
             }
-
 
 
             //when a map is new, there are no props and the map has initial coordinates
@@ -414,7 +392,6 @@ class Map extends Component {
     }
 
     render() {
-
 
         const { name, description, stops, property } = this.state.active;
 
