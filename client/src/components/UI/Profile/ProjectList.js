@@ -1,17 +1,7 @@
 import React from 'react'
-import MapListItem from "./MapListItem"
 import Table from 'react-bootstrap/Table'
 
-
 import ProjectListItem from "./ProjectListItem"
-
-import UserServices from "../../../services/user.services"
-import MapServices from "../../../services/maps.services"
-
-
-
-// const UserService = new UserServices()
-const MapService = new MapServices()
 
 const ProjectList = (props) => {
 

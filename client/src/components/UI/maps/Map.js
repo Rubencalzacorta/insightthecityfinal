@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 
 import './Map.css'
@@ -7,14 +6,12 @@ import mapboxgl from 'mapbox-gl';
 import data from "./madridVectors.json"
 import demografics from "./demografia.json"
 
-
-
 import UserServices from "../../../services/user.services"
 
 mapboxgl.accessToken = process.env.MAPBOX_KEY
 
 
-
+// seetin up all the breakpoints for the map
 const options = [{
     name: 'Area',
     description: 'Neighborhood area',
@@ -180,14 +177,10 @@ const options = [{
 },
 ]
 
-
-
 class Map extends Component {
 
     mapRef = React.createRef();
     map;
-
-
 
     constructor(props) {
         super(props)
@@ -196,7 +189,7 @@ class Map extends Component {
             lng: this.props.state ? this.props.state.lng : -3.70,
             lat: this.props.state ? this.props.state.lat : 40.4115,
             zoom: this.props.state ? this.props.state.zoom : 11,
-            active: options[0],
+            active: this.props.state.active ? this.props.state.active : options[0],
             searchPoints: this.props.state ? this.props.state.searchPoints : null
 
         }
@@ -204,9 +197,8 @@ class Map extends Component {
 
     }
 
-
+    //Mergin all data from the demographis and madrid vectors to a unique geoJson to work on 
     mergedata = () => {
-
         for (let i = 0; i < data.features.length; i++) {
             for (let y = 0; y < demografics.length; y++) {
                 if (data.features[i].properties.name == demografics[y].code) {
@@ -219,14 +211,9 @@ class Map extends Component {
 
     sendFilters = () => this.props.postFilters(this.state)
 
-
-
-
     componentDidMount() {
 
-
         this.mergedata()
-
 
         if (this.props.state) {
             console.log("if")
@@ -268,24 +255,23 @@ class Map extends Component {
 
             //initializing layer of google search points empty to later be updated
 
-            const emptyjson = {
-                "type": "FeatureCollection",
-                "features": [
-                    {
-                        "type": "Feature",
-                        "properties": {},
-                        "geometry": {
-                            "type": "Point",
-                            "coordinates": [
-                                0,
-                                0
-                            ]
-                        }
-                    },
+            // const emptyjson = {
+            //     "type": "FeatureCollection",
+            //     "features": [
+            //         {
+            //             "type": "Feature",
+            //             "properties": {},
+            //             "geometry": {
+            //                 "type": "Point",
+            //                 "coordinates": [
+            //                     0,
+            //                     0
+            //                 ]
+            //             }
+            //         },
 
-                ]
-            }
-
+            //     ]
+            // }
 
             if (this.props.state.searchPoints) {
                 console.log("pasa por el if interno")
@@ -415,8 +401,6 @@ class Map extends Component {
 
 
     componentDidUpdate() {
-
-
         this.props.state.searchPoints && this.map.getSource('pointSource').setData(this.props.state.searchPoints)
         this.setFill()
     }
@@ -430,6 +414,7 @@ class Map extends Component {
     }
 
     render() {
+
 
         const { name, description, stops, property } = this.state.active;
 
@@ -445,7 +430,9 @@ class Map extends Component {
         const renderOptions = (option, i) => {
             return (
                 <label key={i} className="toggle-container">
-                    <input onChange={() => this.setState({ active: options[i] })} checked={option.property === property} name="toggle" type="radio" />
+                    <input onChange={() => {
+                        this.setState({ active: options[i] }, () => this.sendFilters())
+                    }} checked={option.property === property} name="toggle" type="radio" />
                     <div className="toggle txt-s py3 toggle--active-white">{option.name}</div>
                 </label>
             );

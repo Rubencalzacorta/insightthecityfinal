@@ -67,14 +67,14 @@ class Profile extends Component {
                     <Col md={9}>
                         <section className="profile-section">
                             <h1>Hi {this.state.user.name ? this.state.user.name : this.state.user.username}, Welcome to <br /> your profile</h1>
-                            <button class onClick={this.openModal} >Edit profile</button>
+                            <button onClick={this.openModal} >Edit profile</button>
 
                             <JobExperienceSection userDetails={this.state.user} />
 
                             <div className="profile-toggle-box">
-                                <button className={this.state.showList == "maps" ? "profile-toggle-button active" : "profile-toggle-button"} onClick={this.showMaps}>Maps</button>
+                                <button className={this.state.showList === "maps" ? "profile-toggle-button active" : "profile-toggle-button"} onClick={this.showMaps}>Maps</button>
 
-                                <button className={this.state.showList == "projects" ? "profile-toggle-button active" : "profile-toggle-button"} onClick={this.showProjects}>Projects</button>
+                                <button className={this.state.showList === "projects" ? "profile-toggle-button active" : "profile-toggle-button"} onClick={this.showProjects}>Projects</button>
 
                             </div>
 

@@ -1,20 +1,11 @@
-
 import React, { Component } from 'react'
-
-
-// import mapboxgl from 'mapbox-gl';
 
 import "./FilterBar.css"
 
-// import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
-// import Row from 'react-bootstrap/Row'
-// import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 import GoogleServices from "../../../services/google.services"
-
 
 
 class MapFilterBar extends Component {
@@ -36,17 +27,12 @@ class MapFilterBar extends Component {
 
     initialState = () => {
 
-        console.log(this.props.state)
-
         this.props.state &&
 
             this.setState({
 
                 googleKWords: this.props.state.googleKWords,
                 searchPoints: this.props.state.searchPoints,
-
-
-
             })
 
     }

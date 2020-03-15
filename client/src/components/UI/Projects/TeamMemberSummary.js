@@ -3,12 +3,6 @@ import React, { Component } from 'react'
 
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
-// import ListGroup from 'react-bootstrap/ListGroup'
-// import Row from 'react-bootstrap/Row'
-// import Modal from 'react-bootstrap/Modal'
-
-// import GoogleServices from "../../../services/google.services"
-
 
 class ProfileSummary extends Component {
 
@@ -24,7 +18,7 @@ class ProfileSummary extends Component {
     render() {
 
 
-        const { imageUrl, name, lastName, email, description, maps, projects, organizations } = this.props.userDetails
+        const { imageUrl, name, lastName, email, description } = this.props.userDetails
 
         return (
 

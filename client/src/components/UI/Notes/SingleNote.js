@@ -1,13 +1,6 @@
 import React from 'react'
-import Table from 'react-bootstrap/Table'
-
-import { Link } from 'react-router-dom'
-
 
 const SingleNote = (props) => {
-
-
-    // props.userDetails.maps && console.log(mapList)
 
     return (
 

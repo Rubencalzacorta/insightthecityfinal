@@ -10,12 +10,9 @@ import Map from "../../UI/maps/Map"
 import MapFilterBar from "../../UI/FilterBar/FilterBar"
 import NotesBar from "../../UI/Notes/NotesBar"
 
-
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-// import Modal from 'react-bootstrap/Modal'
-
 
 import UserServices from "../../../services/user.services"
 import MapServices from "../../../services/maps.services"
