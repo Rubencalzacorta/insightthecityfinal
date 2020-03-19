@@ -33,10 +33,19 @@ router.post("/update", (req, res, next) => {
 router.post("/addmap", (req, res, next) => {
 
 
-    User.findByIdAndUpdate(req.user.id, { $push: { maps: req.body._id } })
+    User.findByIdAndUpdate(req.user.id, { $push: { maps: req.body._id } }, { new: true })
         .then(updatedUser => res.status(200).json(updatedUser))
         .catch(err => console.log("error retrieving the user data", err))
 })
+
+
+router.post("/removemap", (req, res, next) => {
+
+    User.findByIdAndUpdate(req.user.id, { $pull: { maps: req.body.id } }, { new: true })
+        .then(updatedUser => res.status(200).json(updatedUser))
+        .catch(err => console.log("error retrieving the user data", err))
+})
+
 
 router.post("/addproject", (req, res, next) => {
 
@@ -50,5 +59,20 @@ router.post("/addproject", (req, res, next) => {
         .then(updatedUser => res.status(200).json(updatedUser))
         .catch(err => console.log("error retrieving the user data", err))
 })
+
+
+router.post("/removeproject", (req, res, next) => {
+    const deletedProject = {
+        $pull: {
+            projects: req.body.id
+        }
+    }
+
+    User.findByIdAndUpdate(req.user.id, deletedProject, { new: true })
+        .then(updatedUser => res.status(200).json(updatedUser))
+        .catch(err => console.log("error retrieving the user data", err))
+
+})
+
 
 module.exports = router;

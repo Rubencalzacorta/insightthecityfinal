@@ -23,6 +23,8 @@ export default class GoogleServices {
         return this.service.get(`nearbysearch/json?location=40.414295,-3.706348&radius=6000&keyword=${newKeyword}&key=AIzaSyA4kSlF_U7Jn2kZLB6bsUaLlnSqt7UJLL4`)
             .then(response => {
 
+
+                //creating geoJson to return to app. 
                 const geojson = {
                     type: 'FeatureCollection',
                     features: []

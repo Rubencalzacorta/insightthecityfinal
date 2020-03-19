@@ -22,7 +22,7 @@ const ProjectList = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {props.list.map((elm, idx) => <ProjectListItem key={idx} item={elm} />)}
+                        {props.list.map((elm, idx) => <ProjectListItem key={idx} removeProject={props.removeProject} item={elm} />)}
                     </tbody>
                 </Table>
             </div>

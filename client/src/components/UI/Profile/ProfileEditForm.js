@@ -42,9 +42,8 @@ class ProfileEditForm extends Component {
 
     }
 
-    handleClose = e => {
-        e.preventDefault()
-        this.finishAction()
+    handleClose = () => {
+        this.props.closeModal()
     }
 
 
@@ -123,8 +122,8 @@ class ProfileEditForm extends Component {
 
 
 
-                        <Button variant="dark" type="submit">Update profile</Button>
-                        <Button variant="dark" type="button" onclick={this.handleClose}>Cancel</Button>
+                        <Button style={{ marginRight: 10 }} variant="outline-info" type="submit">Update profile</Button>
+                        <Button variant="outline-info" type="button" onClick={this.handleClose}>Cancel</Button>
                     </Form>
                     :
                     <h1>loading</h1>}

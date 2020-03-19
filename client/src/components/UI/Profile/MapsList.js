@@ -10,11 +10,12 @@ const MapsTable = (props) => {
         props.list ?
             <div>
 
-                <Table hover responsive>
+                <Table style={{ marginTop: 20 }} hover responsive>
                     <thead>
                         <tr>
                             <th>Ceated</th>
                             <th>Keywords</th>
+                            <th>Demographic</th>
                             <th>Go to Map</th>
                             <th>Delete</th>
                         </tr>

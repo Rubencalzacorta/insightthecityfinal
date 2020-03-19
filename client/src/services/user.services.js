@@ -14,12 +14,11 @@ class authServices {
 
     addMap = map => this.service.post("/addmap", map).then(response => response.data)
 
-    addProject = (id) => this.service.post("/addproject", { id }).then(response => response.data)
+    addProject = id => this.service.post("/addproject", { id }).then(response => response.data)
 
+    removeMap = id => this.service.post("/removemap", { id }).then(response => response.data)
 
-    // login = ({ username, password }) => this.service.post("/login", { username, password })
-    // logout = () => this.service.post('/logout').then(response => response.data)
-    // loggedin = () => this.service.get('/loggedin').then(response => response.data)
+    removeProject = id => this.service.post("/removeproject", { id }).then(response => response.data)
 
 }
 

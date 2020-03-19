@@ -15,6 +15,7 @@ import "./Profile.css"
 
 import UserServices from "../../../services/user.services"
 import MapServices from "../../../services/maps.services"
+import ProjectServices from "../../../services/project.services"
 
 class Profile extends Component {
 
@@ -27,6 +28,7 @@ class Profile extends Component {
         }
         this.UserServices = new UserServices()
         this.MapServices = new MapServices()
+        this.ProjectServices = new ProjectServices()
     }
 
     componentDidMount = () => this.getUser()
@@ -50,7 +52,16 @@ class Profile extends Component {
 
     removeMap = (id) => {
         this.MapServices.removeMap(id)
-        this.getUser()
+            .then(() => this.UserServices.removeMap(id))
+            .then(() => this.getUser())
+            .catch(err => console.log("peroblemas eliminando el mapa", err))
+    }
+
+    removeProject = (id) => {
+        this.ProjectServices.removeProject(id)
+            .then(() => this.UserServices.removeProject(id))
+            .then(() => this.getUser())
+            .catch(err => console.log("peroblemas eliminando el project", err))
     }
 
 
@@ -81,7 +92,7 @@ class Profile extends Component {
                             {this.state.showList === "maps" ?
                                 <MapList list={this.state.user.maps} removeMap={this.removeMap} />
                                 :
-                                <ProjectList list={this.state.user.projects} />
+                                <ProjectList list={this.state.user.projects} removeProject={this.removeProject} />
                             }
 
                         </section>

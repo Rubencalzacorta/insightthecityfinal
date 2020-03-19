@@ -10,10 +10,10 @@ const projectSchema = new Schema({
         ref: 'User'
     },
 
-    map: {
+    maps: [{
         type: Schema.Types.ObjectId,
-        ref: 'map'
-    },
+        ref: 'MapGraph'
+    }],
 
     team: [{
         type: Schema.Types.ObjectId,

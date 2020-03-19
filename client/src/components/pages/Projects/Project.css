@@ -1,0 +1,41 @@
+.project-container{
+    background-color: rgb(240, 240, 240);
+    min-height: 100vh;
+    padding: 20px;
+
+}
+
+.project-container > *{
+    margin-top: 40px;
+}
+
+.project-container h2 {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+
+.project-container p {
+    margin-bottom: 20px;
+}
+
+.project-container p {
+    margin-bottom: 20px;
+}
+
+.project-body{
+    height: 70vh;
+    width: 95%;
+    justify-content: center;
+}
+
+.project-body > *{
+border: 1px solid rebeccapurple;
+width: 50%;
+min-height: 100px;
+margin-top: 10px;
+padding-top: 20px;
+padding-bottom: 20px;
+margin-left: 2.5%;
+box-shadow: 11px 11px 14px -16px rgba(0,0,0,0.75);
+}

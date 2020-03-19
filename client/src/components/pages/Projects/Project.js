@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import "./Project.css"
+
 import Container from 'react-bootstrap/Container'
 import Modal from 'react-bootstrap/Modal'
 import Col from 'react-bootstrap/Col'
@@ -8,7 +10,9 @@ import Row from 'react-bootstrap/Row'
 
 import ProjectEditForm from "../../UI/Projects/ProjectEditForm"
 import ProjectInfoBox from "../../UI/Projects/ProjectInfoBox"
-import TeamMemberSummary from "../../UI/Projects/TeamMemberSummary"
+import ProjectPictures from "./../../UI/Projects/ProjectPictures"
+import ProjectMaps from "./../../UI/Projects/ProjectMaps"
+
 
 import ProjectServices from "../../../services/project.services"
 
@@ -39,60 +43,61 @@ class Project extends Component {
 
     openModal = () => this.setState({ showModal: true })
 
-    // closeTeamModal = () => this.setState({ showModal: false })
-
-    // openTeamModal = () => this.setState({ showModal: true })
 
     updateState = state => {
-        console.log("ser recibio el update state")
         this.setState({ ...this.state, project: { ...state } })
+    }
+
+    addPictures = images => {
+        this.ProjectServices.addPictures(images)
+        this.getProject()
     }
 
     render() {
 
-        // console.log(this.state)
-        const { name, proposal, opportunity, team } = this.state.project
+        const { name, proposal, opportunity } = this.state.project
 
         return (
 
             this.props ?
 
-                <Container>
-                    <h1> {name}</h1>
-                    <button onClick={this.openModal} >Edit project</button>
+                <Container >
 
-                    <Col>
-                        <Row>
-                            <ProjectInfoBox title="Proposal" content={proposal} />
-                        </Row>
+                    <section className="project-container">
 
-                        <Row>
-                            <ProjectInfoBox title="Opportunity" content={opportunity} />
-                        </Row>
+                        <div className="project-head">
+                            <h1> {name}</h1>
+                            <button onClick={this.openModal} >Edit project</button>
+                        </div>
+                        <Row >
+                            <div className="project-body">                            <Col md={12}>
+                                <ProjectInfoBox title="Proposal" content={proposal} />
+                            </Col>
 
-                        <Row>
+                                <Col md={12}>
+                                    <ProjectInfoBox title="Opportunity" content={opportunity} />
+                                </Col>
 
-                            <div className="project-team-box">
-                                <h1>Team</h1>
+                                <Col md={12}>
+                                    <ProjectMaps updateState={this.updateState} project={this.state.project} loggedInUser={this.props.loggedInUser} getProject={this.getProject} />
+                                </Col>
 
-                                {/* {team ? <p>Existe</p> : "loading"} */}
+                                <Col md={12}>
+                                    <ProjectPictures updateState={this.updateState} project={this.state.project} loggedInUser={this.props.loggedInUser} getProject={this.getProject} />
+                                </Col>
 
-                                {team ? team.map((elm, idx) => <TeamMemberSummary key={idx} userDetails={elm} />) : "loading"}
+
+                                <Modal show={this.state.showModal} onHide={this.closeTeamModal}>
+                                    <Modal.Body>
+                                        <h3>Edit your Project</h3>
+                                        <hr></hr>
+                                        <ProjectEditForm closeModal={this.closeModal} project={this.state.project} updateState={this.updateState} />
+                                    </Modal.Body>
+                                </Modal>
                             </div>
+
                         </Row>
-
-
-
-                        <Modal show={this.state.showModal} onHide={this.closeTeamModal}>
-                            <Modal.Body>
-                                <h3>Edit your Project</h3>
-                                <hr></hr>
-                                <ProjectEditForm closeModal={this.closeModal} project={this.state.project} updateState={this.updateState} />
-                            </Modal.Body>
-                        </Modal>
-
-                    </Col>
-
+                    </section>
                 </Container>
                 :
                 "loading"

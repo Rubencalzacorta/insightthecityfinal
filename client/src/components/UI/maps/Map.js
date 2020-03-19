@@ -221,6 +221,7 @@ class Map extends Component {
             center: [this.state.lng, this.state.lat],
             zoom: this.state.zoom
         })
+        // 
 
         this.map.on('move', () => {
             this.setState({
@@ -333,7 +334,7 @@ class Map extends Component {
 
         return (
             <div>
-                <div ref={this.mapRef} className="absolute top right left bottom" />
+                <div id="mapbox"><div ref={this.mapRef} className="absolute top right left bottom" /></div>
                 <div className="toggle-group absolute top left ml12 mt12 border border--2 border--white bg-white shadow-darken10 z1">
                     {options.map(renderOptions)}
                 </div>
