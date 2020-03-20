@@ -1,14 +1,6 @@
 
 import React, { Component } from 'react'
 
-// import Card from 'react-bootstrap/Card'
-// import Col from 'react-bootstrap/Col'
-// import ListGroup from 'react-bootstrap/ListGroup'
-// // import Row from 'react-bootstrap/Row'
-// import Modal from 'react-bootstrap/Modal'
-
-// import GoogleServices from "../../../services/google.services"
-
 import "./JobExperienceSection.css"
 
 class JobExperienceSection extends Component {
@@ -20,6 +12,7 @@ class JobExperienceSection extends Component {
 
         }
     }
+
 
     render() {
 

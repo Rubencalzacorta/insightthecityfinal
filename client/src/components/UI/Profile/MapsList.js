@@ -4,7 +4,6 @@ import Table from 'react-bootstrap/Table'
 
 const MapsTable = (props) => {
 
-
     return (
 
         props.list ?

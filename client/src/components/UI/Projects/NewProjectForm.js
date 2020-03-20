@@ -8,10 +8,6 @@ import Modal from 'react-bootstrap/Modal'
 import UserServices from "../../../services/user.services"
 import ProjectServices from "../../../services/project.services"
 
-
-// import JobExperienceCard from "./JobExperience"
-
-
 class ProfileEditForm extends Component {
 
     constructor(props) {
@@ -39,7 +35,7 @@ class ProfileEditForm extends Component {
     }
 
     createProject = () => {
-
+        //creates a project and adds it to the user
         this.ProjectServices.createProject(this.state.project)
             .then(project => {
                 console.log("adding the project")
@@ -63,7 +59,6 @@ class ProfileEditForm extends Component {
 
         return (
             <>
-
                 {this.state ?
 
                     <Modal show={this.state.showModal} onHide={this.closeModal}>

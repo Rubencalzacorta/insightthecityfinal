@@ -37,7 +37,6 @@ class ProjectMaps extends Component {
             })
     }
 
-
     handleRemoveSubmit = e => {
         e.preventDefault()
         this.ProjectServices.removeMap(this.props.project._id, this.state.removeMap)
@@ -46,7 +45,6 @@ class ProjectMaps extends Component {
                 this.props.getProject()
             })
     }
-
 
     resetState = () => this.setState({
         showModal: false,

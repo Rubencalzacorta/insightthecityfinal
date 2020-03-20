@@ -40,16 +40,6 @@ class Profile extends Component {
             .catch(err => console.log(err))
     }
 
-    updateState = (theUser) => this.setState({ ...this.state, user: theUser })
-
-    showMaps = () => this.setState({ ...this.state, showList: "maps" })
-
-    showProjects = () => this.setState({ ...this.state, showList: "projects" })
-
-    closeModal = () => this.setState({ showModal: false })
-
-    openModal = () => this.setState({ showModal: true })
-
     removeMap = (id) => {
         this.MapServices.removeMap(id)
             .then(() => this.UserServices.removeMap(id))
@@ -64,27 +54,37 @@ class Profile extends Component {
             .catch(err => console.log("peroblemas eliminando el project", err))
     }
 
+    showMaps = () => this.setState({ ...this.state, showList: "maps" })
+
+    showProjects = () => this.setState({ ...this.state, showList: "projects" })
+
+    closeModal = () => this.setState({ showModal: false })
+
+    openModal = () => this.setState({ showModal: true })
+
+
 
     render() {
 
         return (
 
             <Container>
-                <Row className="align-items-left">
 
+                <Row className="align-items-left">
 
                     <UserSummary userDetails={this.state.user} />
 
                     <Col md={9}>
                         <section className="profile-section">
+
                             <h1>Hi {this.state.user.name ? this.state.user.name : this.state.user.username}, Welcome to <br /> your profile</h1>
                             <button onClick={this.openModal} >Edit profile</button>
 
                             <JobExperienceSection userDetails={this.state.user} />
 
                             <div className="profile-toggle-box">
-                                <button className={this.state.showList === "maps" ? "profile-toggle-button active" : "profile-toggle-button"} onClick={this.showMaps}>Maps</button>
 
+                                <button className={this.state.showList === "maps" ? "profile-toggle-button active" : "profile-toggle-button"} onClick={this.showMaps}>Maps</button>
                                 <button className={this.state.showList === "projects" ? "profile-toggle-button active" : "profile-toggle-button"} onClick={this.showProjects}>Projects</button>
 
                             </div>
@@ -99,13 +99,14 @@ class Profile extends Component {
 
                     </Col>
 
-
                     <Modal show={this.state.showModal} onHide={this.closeModal}>
+
                         <Modal.Body>
                             <h3>Edit Your profile</h3>
                             <hr></hr>
-                            <ProfileEditForm closeModal={this.closeModal} loggedInUser={this.props.loggedInUser} updateState={this.updateState} />
+                            <ProfileEditForm closeModal={this.closeModal} loggedInUser={this.props.loggedInUser} getUser={this.getUser} />
                         </Modal.Body>
+
                     </Modal>
 
 

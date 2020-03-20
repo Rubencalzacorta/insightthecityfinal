@@ -50,6 +50,8 @@ router.post("/updatemain", (req, res, next) => {
     const { _id, name, opportunity, proposal } = req.body
 
     Publication.findByIdAndUpdate(_id, { name, opportunity, proposal }, { new: true })
+        .populate("creator")
+        .populate("maps")
         .then(updatedProject => {
             console.log(updatedProject)
             res.status(200).json(updatedProject)
@@ -64,13 +66,14 @@ router.post("/removeproject", (req, res, next) => {
         .catch(err => console.log("error eliminando el projecto", err))
 })
 
+
 router.post("/addmap", (req, res, next) => {
 
-    console.log("----------------------esto es add map")
     Publication.findByIdAndUpdate(req.body.projectId, { $push: { maps: req.body.mapId } }, { new: true })
         .then(updatedUser => res.status(200).json(updatedUser))
         .catch(err => console.log("error sumando mapa de proyecto", err))
 })
+
 
 router.post("/removemap", (req, res, next) => {
 
@@ -80,8 +83,21 @@ router.post("/removemap", (req, res, next) => {
 })
 
 
+router.post("/addpictures", (req, res, next) => {
 
 
+    console.log("----------------------esto es add pictures req.body", req.body)
+    Publication.findByIdAndUpdate(req.body.projectId, { $push: { images: req.body.images } }, { new: true })
+        .then(updatedUser => res.status(200).json(updatedUser))
+        .catch(err => console.log("error sumando mapa de proyecto", err))
+})
 
+
+router.post("/removepictures", (req, res, next) => {
+
+    Publication.findByIdAndUpdate(req.body.projectId, { $pull: { images: req.body.url } }, { new: true })
+        .then(updatedUser => res.status(200).json(updatedUser))
+        .catch(err => console.log("error borrando mapa de proyecto", err))
+})
 
 module.exports = router;

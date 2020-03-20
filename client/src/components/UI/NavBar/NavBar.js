@@ -24,14 +24,9 @@ class Navigation extends Component {
     }
 
 
-
-
     render() {
 
-
-
         const greeting = this.props.loggedInUser ? <>Hola, {this.props.loggedInUser.username}</> : <>Hola, invitad@</>
-
 
         return (
 

@@ -1,7 +1,8 @@
 .project-container{
     background-color: rgb(240, 240, 240);
-    min-height: 100vh;
+
     padding: 20px;
+    margin-bottom: 50px; 
 
 }
 
@@ -19,12 +20,9 @@
     margin-bottom: 20px;
 }
 
-.project-container p {
-    margin-bottom: 20px;
-}
 
 .project-body{
-    height: 70vh;
+    min-height: 70vh;
     width: 95%;
     justify-content: center;
 }
@@ -39,3 +37,31 @@ padding-bottom: 20px;
 margin-left: 2.5%;
 box-shadow: 11px 11px 14px -16px rgba(0,0,0,0.75);
 }
+
+.project-image-fig{
+  margin-top: 30px;
+}
+
+.project-image-fig button{
+    position: relative;
+
+}
+.project-image-fig button{
+    position: absolute;
+    left: 85%;
+    margin-top: 2%;
+    z-index: 10;
+
+
+    background-color: rgba(255, 255, 255, 0.671);
+    border: 1px solid black;
+    padding: 3px 5px;
+    border-radius: 3px;
+}
+.project-image-fig button:hover{
+ 
+    color:  rgba(255, 255, 255, 0.671);
+    background-color:  rgba(0, 0, 0, 0.671);
+
+}
+

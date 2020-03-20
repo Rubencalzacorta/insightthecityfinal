@@ -4,9 +4,12 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
+import ProjectPictureItem from "./ProjectPictureItem"
+
 import "./../../pages/Home/Home.css"
 
 import FilesServices from "./../../../services/files.services"
+import ProjectServices from "./../../../services/project.services"
 
 class ProjectMaps extends Component {
 
@@ -15,9 +18,11 @@ class ProjectMaps extends Component {
         this.state = {
             showModal: false,
             includeMap: "",
-            removeMap: ""
+            removeMap: "",
+            images: []
         }
         this.FilesServices = new FilesServices()
+        this.ProjectServices = new ProjectServices()
     }
 
     handleChange = e => {
@@ -27,7 +32,7 @@ class ProjectMaps extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        this.ProjectServices.addMap(this.props.project._id, this.state.includeMap)
+        this.ProjectServices.addPictures(this.props.project._id, this.state.images)
             .then(() => {
                 this.resetState()
                 this.props.getProject()
@@ -40,45 +45,37 @@ class ProjectMaps extends Component {
         removeMap: ""
     })
 
-    removeImage = (url) => {
-        this.props.getProject()
-    }
-
     openModal = () => this.setState({ ...this.state, showModal: true })
 
     closeModal = () => this.setState({ ...this.state, showModal: false })
 
 
-    // handleFileUpload = e => {
 
-    //     console.log([...e.target.files])
-
-    //     const uploadData = new FormData()
-
-    //     const filesList = [...e.target.files]
-
-    //     filesList.forEach((elm, idx) => uploadData.append("imageUrl", elm))
-    //     this.FilesServices.handleUpload(uploadData)
-    //         .then(response => {
-    //             console.log('Subida de archivo finalizada! La URL de Cloudinray es: ', response.secure_url)
-    //             // this.setState({ user: { ...this.state.user, imageUrl: response.secure_url } })
-    //         })
-    //         .catch(err => console.log("error subiendo la foto", err))
-    // }
-
+    //for multiple impage upload, include multiple in the form and use the for loop below. 
     handleFileUpload = e => {
         const uploadData = new FormData()
         for (let key in e.target.files) {
-            uploadData.append("imageUrl", e.target.files[key])
+            console.log("key", key, "files", e.target.files)
+            uploadData.append("images", e.target.files[key])
+            console.log(uploadData)
         }
-        console.log(uploadData)
-        // this.FilesServices.handleUpload(uploadData)
-        //     .then(response => {
-        //         console.log('Subida de archivo finalizada! La URL de Cloudinray es: ', response.secure_url)
-        //     })
-        //     .catch(err => console.log(err))
+
+        this.FilesServices.handleUpload(uploadData)
+            .then(response => {
+                console.log('Subida de archivo finalizada! La URL de Cloudinray es: ', response.secure_url)
+                this.setState({ ...this.state, images: response.secure_url })
+
+            })
+            .catch(err => console.log(err))
     }
 
+    removePicture = (url) => {
+        console.log("se hizo click")
+        this.ProjectServices.removePictures(this.props.project._id, url)
+            .then(() => this.props.getProject())
+            .catch(err => console.log("error borrando la imagen", err))
+
+    }
 
     render() {
 
@@ -92,6 +89,10 @@ class ProjectMaps extends Component {
                             <h2>Images</h2>
                             <button className="home-buttons" onClick={this.openModal}>Add Images</button>
                         </article>
+
+                        <div className="project-images-wrapper">
+                            {this.props.project.images.map((elm, idx) => <ProjectPictureItem key={idx} removePicture={this.removePicture} item={elm} />)}
+                        </div>
 
 
                         <Modal show={this.state.showModal} onHide={this.closeModal}>

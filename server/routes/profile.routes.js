@@ -6,8 +6,6 @@ const Project = require("../models/Publication")
 
 
 router.get("/:id", (req, res, next) => {
-
-
     User.findById(req.params.id)
         .populate("maps")
         .populate("projects")
@@ -16,23 +14,21 @@ router.get("/:id", (req, res, next) => {
 })
 
 
-
 router.post("/update", (req, res, next) => {
-    console.log(req.body)
-
     User.findByIdAndUpdate(req.body._id, req.body, { new: true })
-        .then(updatedUser => {
-            console.log(updatedUser)
-            User.findById(updatedUser._id).populate("maps").populate("projects")
+        .then(updatedUser => User.findById(updatedUser._id)
+            .populate("maps")
+            .populate("projects")
+        )
+        .then(populatedUser => {
+            console.log("este es el usuario updated", populatedUser)
+            res.status(200).json(populatedUser)
         })
-        .then(populatedUser => res.status(200).json(populatedUser))
         .catch(err => console.log("error retrieving the user data", err))
 })
 
 
 router.post("/addmap", (req, res, next) => {
-
-
     User.findByIdAndUpdate(req.user.id, { $push: { maps: req.body._id } }, { new: true })
         .then(updatedUser => res.status(200).json(updatedUser))
         .catch(err => console.log("error retrieving the user data", err))

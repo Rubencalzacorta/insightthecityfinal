@@ -19,7 +19,7 @@ const projectSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
-    image: [String],
+    images: [String],
 
     comments: [{
         type: Schema.Types.ObjectId,

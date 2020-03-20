@@ -26,12 +26,10 @@ class ProjectEditForm extends Component {
         this.setState({ ...this.state, [name]: value })
     }
 
-
     updateProject = () => {
         this.ProjectServices.updateProject(this.state)
             .then(updatedProject => {
                 this.props.updateState(updatedProject)
-
             })
             .catch(err => console.log(err))
     }
@@ -49,8 +47,6 @@ class ProjectEditForm extends Component {
 
     }
 
-
-
     finishAction = () => {
         this.props.closeModal()
     }
@@ -59,8 +55,6 @@ class ProjectEditForm extends Component {
     render() {
 
         const { name, proposal, opportunity, } = this.state
-
-
 
         return (
 

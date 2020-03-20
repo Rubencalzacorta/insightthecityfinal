@@ -8,9 +8,8 @@ const ProjectList = (props) => {
     return (
 
         props.list ?
+
             <div>
-
-
                 <Table hover>
                     <thead>
                         <tr>

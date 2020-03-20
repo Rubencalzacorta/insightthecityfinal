@@ -1,5 +1,4 @@
-
-const options = [{
+export const options = [{
     name: 'Area',
     description: 'Neighborhood area',
     property: 'Area(Hab)',
@@ -8,14 +7,14 @@ const options = [{
     ]
 }, {
     name: 'Density',
-    description: 'Estimate total GDP in millions of dollars',
+    description: '',
     property: 'Density',
     stops: [
         [49.88, "rgba(79, 238, 203, 0.15)"], [99.59, "rgba(79, 238, 203, 0.2)"], [149.29, "rgba(79, 238, 203, 0.28)"], [199, "rgba(79, 238, 203, 0.35)"], [248.7, "rgba(79, 238, 203, 0.40)"], [298.41, "rgba(79, 238, 203, 0.47)"], [348.11, "rgba(79, 238, 203, 0.55)"], [397.82, "rgba(79, 238, 203, 0.62)"], [447.52, "rgba(79, 238, 203, 0.69)"], [671, "rgba(79, 238, 203, 0.74)"]
     ]
 }, {
     name: 'Men',
-    description: 'Estimate total GDP in millions of dollars',
+    description: 'Number of male inhabitants',
     property: 'Men',
     stops: [
         [3797.11, "rgba(79, 238, 203, 0.15)"], [7104.22, "rgba(79, 238, 203, 0.2)"], [10411.33, "rgba(79, 238, 203, 0.28)"], [13718.44, "rgba(79, 238, 203, 0.35)"], [17025.56, "rgba(79, 238, 203, 0.40)"], [20332.67, "rgba(79, 238, 203, 0.47)"], [23639.78, "rgba(79, 238, 203, 0.55)"], [26946.89, "rgba(79, 238, 203, 0.62)"], [30254, "rgba(79, 238, 203, 0.69)"], [45381, "rgba(79, 238, 203, 0.74)"]
@@ -23,7 +22,7 @@ const options = [{
 }
     , {
     name: 'Women',
-    description: 'Estimate total GDP in millions of dollars',
+    description: 'Number of male inhabitants',
     property: 'Women',
     stops: [
         [4371.89, "rgba(79, 238, 203, 0.15)"], [8288.78, "rgba(79, 238, 203, 0.2)"], [12205.67, "rgba(79, 238, 203, 0.28)"], [16122.56, "rgba(79, 238, 203, 0.35)"], [20039.44, "rgba(79, 238, 203, 0.40)"], [23956.33, "rgba(79, 238, 203, 0.47)"], [27873.22, "rgba(79, 238, 203, 0.55)"], [31790.11, "rgba(79, 238, 203, 0.62)"], [35707, "rgba(79, 238, 203, 0.69)"], [53560, "rgba(79, 238, 203, 0.74)"]
@@ -31,7 +30,7 @@ const options = [{
 }
     , {
     name: 'Avg Age',
-    description: 'Estimate total GDP in millions of dollars',
+    description: 'Avg age of inhabitants',
     property: 'Avg Age',
     stops: [
         [34.68, "rgba(79, 238, 203, 0.15)"], [36.54, "rgba(79, 238, 203, 0.2)"], [38.39, "rgba(79, 238, 203, 0.28)"], [40.25, "rgba(79, 238, 203, 0.35)"], [42.11, "rgba(79, 238, 203, 0.40)"], [43.97, "rgba(79, 238, 203, 0.47)"], [45.82, "rgba(79, 238, 203, 0.55)"], [47.68, "rgba(79, 238, 203, 0.62)"], [49.54, "rgba(79, 238, 203, 0.69)"], [74, "rgba(79, 238, 203, 0.74)"]
@@ -39,14 +38,14 @@ const options = [{
 }
     , {
     name: '0 - 14',
-    description: 'Estimate total GDP in millions of dollars',
+    description: '0 - 14 age group',
     property: '0 - 14',
     stops: [
         [1780.67, "rgba(79, 238, 203, 0.15)"], [3371.33, "rgba(79, 238, 203, 0.2)"], [4962, "rgba(79, 238, 203, 0.28)"], [6552.67, "rgba(79, 238, 203, 0.35)"], [8143.33, "rgba(79, 238, 203, 0.40)"], [9734, "rgba(79, 238, 203, 0.47)"], [11324.67, "rgba(79, 238, 203, 0.55)"], [12915.33, "rgba(79, 238, 203, 0.62)"], [14506, "rgba(79, 238, 203, 0.69)"], [21759, "rgba(79, 238, 203, 0.74)"]
     ]
 }
     , {
-    name: '15 - 29',
+    name: '15 - 29 age group',
     description: 'Estimate total GDP in millions of dollars',
     property: '15 - 29',
     stops: [
@@ -55,14 +54,14 @@ const options = [{
 }
     , {
     name: '30 - 44',
-    description: 'Estimate total GDP in millions of dollars',
+    description: '30 -44 age group',
     property: '30 - 44',
     stops: [
         [2222.89, "rgba(79, 238, 203, 0.15)"], [4211.78, "rgba(79, 238, 203, 0.2)"], [6200.67, "rgba(79, 238, 203, 0.28)"], [8189.56, "rgba(79, 238, 203, 0.35)"], [10178.44, "rgba(79, 238, 203, 0.40)"], [12167.33, "rgba(79, 238, 203, 0.47)"], [14156.22, "rgba(79, 238, 203, 0.55)"], [16145.11, "rgba(79, 238, 203, 0.62)"], [18134, "rgba(79, 238, 203, 0.69)"], [27201, "rgba(79, 238, 203, 0.74)"]
     ]
 }
     , {
-    name: '45 - 64',
+    name: '45 - 64 age group',
     description: 'Estimate total GDP in millions of dollars',
     property: '45 - 64',
     stops: [
@@ -70,7 +69,7 @@ const options = [{
     ]
 }
     , {
-    name: '65 plus',
+    name: '65 plus age group',
     description: 'Estimate total GDP in millions of dollars',
     property: '65 plus',
     stops: [
@@ -79,7 +78,7 @@ const options = [{
 }
     , {
     name: 'Spaniards',
-    description: 'Estimate total GDP in millions of dollars',
+    description: 'Number of Spaniard recidents',
     property: 'Spaniards',
     stops: [
         [0.71, "rgba(79, 238, 203, 0.15)"], [0.74, "rgba(79, 238, 203, 0.2)"], [0.78, "rgba(79, 238, 203, 0.28)"], [0.81, "rgba(79, 238, 203, 0.35)"], [0.84, "rgba(79, 238, 203, 0.40)"], [0.87, "rgba(79, 238, 203, 0.47)"], [0.9, "rgba(79, 238, 203, 0.55)"], [0.94, "rgba(79, 238, 203, 0.62)"], [0.97, "rgba(79, 238, 203, 0.69)"], [1, "rgba(79, 238, 203, 0.74)"]
@@ -87,81 +86,81 @@ const options = [{
 }
     , {
     name: 'Foreigners',
-    description: 'Estimate total GDP in millions of dollars',
+    description: 'Number of Foreigners residents',
     property: 'Foreigners',
     stops: [
         [0.06, "rgba(79, 238, 203, 0.15)"], [0.1, "rgba(79, 238, 203, 0.2)"], [0.13, "rgba(79, 238, 203, 0.28)"], [0.16, "rgba(79, 238, 203, 0.35)"], [0.19, "rgba(79, 238, 203, 0.40)"], [0.22, "rgba(79, 238, 203, 0.47)"], [0.26, "rgba(79, 238, 203, 0.55)"], [0.29, "rgba(79, 238, 203, 0.62)"], [0.32, "rgba(79, 238, 203, 0.69)"], [1, "rgba(79, 238, 203, 0.74)"]
     ]
 }, {
     name: 'N Houses',
-    description: 'Estimate total GDP in millions of dollars',
+    description: 'Number of houses',
     property: 'N Houses',
     stops: [
         [3304.11, "rgba(79, 238, 203, 0.15)"], [6204.22, "rgba(79, 238, 203, 0.2)"], [9104.33, "rgba(79, 238, 203, 0.28)"], [12004.44, "rgba(79, 238, 203, 0.35)"], [14904.56, "rgba(79, 238, 203, 0.40)"], [17804.67, "rgba(79, 238, 203, 0.47)"], [20704.78, "rgba(79, 238, 203, 0.55)"], [23604.89, "rgba(79, 238, 203, 0.62)"], [26505, "rgba(79, 238, 203, 0.69)"], [39757, "rgba(79, 238, 203, 0.74)"]
     ]
 }, {
-    name: 'Home size',
+    name: 'Avg people per household',
     description: 'Estimate total GDP in millions of dollars',
     property: 'Home size',
     stops: [
         [2.11, "rgba(79, 238, 203, 0.15)"], [2.28, "rgba(79, 238, 203, 0.2)"], [2.46, "rgba(79, 238, 203, 0.28)"], [2.63, "rgba(79, 238, 203, 0.35)"], [2.81, "rgba(79, 238, 203, 0.40)"], [2.99, "rgba(79, 238, 203, 0.47)"], [3.16, "rgba(79, 238, 203, 0.55)"], [3.34, "rgba(79, 238, 203, 0.62)"], [3.51, "rgba(79, 238, 203, 0.69)"], [5, "rgba(79, 238, 203, 0.74)"]]
 }, {
     name: 'Natality rate',
-    description: 'Estimate total GDP in millions of dollars',
+    description: 'Natality rate of neighborhood',
     property: 'Natality rate',
     stops: [
         [8.37, "rgba(79, 238, 203, 0.15)"], [11.87, "rgba(79, 238, 203, 0.2)"], [15.38, "rgba(79, 238, 203, 0.28)"], [18.89, "rgba(79, 238, 203, 0.35)"], [22.39, "rgba(79, 238, 203, 0.40)"], [25.9, "rgba(79, 238, 203, 0.47)"], [29.41, "rgba(79, 238, 203, 0.55)"], [32.91, "rgba(79, 238, 203, 0.62)"], [36.42, "rgba(79, 238, 203, 0.69)"], [54, "rgba(79, 238, 203, 0.74)"]
     ]
 }, {
     name: 'Growth rate',
-    description: 'Estimate total GDP in millions of dollars',
+    description: 'Growth rate in terms of inhabitants',
     property: 'Growth rate',
     stops: [
         [7.93, "rgba(79, 238, 203, 0.15)"], [17.79, "rgba(79, 238, 203, 0.2)"], [27.65, "rgba(79, 238, 203, 0.28)"], [37.51, "rgba(79, 238, 203, 0.35)"], [47.37, "rgba(79, 238, 203, 0.40)"], [57.22, "rgba(79, 238, 203, 0.47)"], [67.08, "rgba(79, 238, 203, 0.55)"], [76.94, "rgba(79, 238, 203, 0.62)"], [86.8, "rgba(79, 238, 203, 0.69)"], [130, "rgba(79, 238, 203, 0.74)"]
     ]
 }, {
     name: 'Income per house',
-    description: 'Estimate total GDP in millions of dollars',
+    description: 'Avg yearly income of the household',
     property: 'Income per house',
     stops: [
         [29890.83, "rgba(79, 238, 203, 0.15)"], [40194.57, "rgba(79, 238, 203, 0.2)"], [50498.31, "rgba(79, 238, 203, 0.28)"], [60802.05, "rgba(79, 238, 203, 0.35)"], [71105.79, "rgba(79, 238, 203, 0.40)"], [81409.53, "rgba(79, 238, 203, 0.47)"], [91713.27, "rgba(79, 238, 203, 0.55)"], [102017.01, "rgba(79, 238, 203, 0.62)"], [112320.75, "rgba(79, 238, 203, 0.69)"], [168481, "rgba(79, 238, 203, 0.74)"]
     ]
 }, {
     name: 'Unemployment',
-    description: 'Estimate total GDP in millions of dollars',
+    description: 'Unemployment rate',
     property: 'Unemployment',
     stops: [
         [0.07, "rgba(79, 238, 203, 0.15)"], [0.13, "rgba(79, 238, 203, 0.2)"], [0.19, "rgba(79, 238, 203, 0.28)"], [0.25, "rgba(79, 238, 203, 0.35)"], [0.32, "rgba(79, 238, 203, 0.40)"], [0.38, "rgba(79, 238, 203, 0.47)"], [0.44, "rgba(79, 238, 203, 0.55)"], [0.51, "rgba(79, 238, 203, 0.62)"], [0.57, "rgba(79, 238, 203, 0.69)"], [1, "rgba(79, 238, 203, 0.74)"]
     ]
 }, {
     name: 'Students',
-    description: 'Estimate total GDP in millions of dollars',
+    description: 'Number of currently studying',
     property: 'Students',
     stops: [
         [1851.89, "rgba(79, 238, 203, 0.15)"], [3507.78, "rgba(79, 238, 203, 0.2)"], [5163.67, "rgba(79, 238, 203, 0.28)"], [6819.56, "rgba(79, 238, 203, 0.35)"], [8475.44, "rgba(79, 238, 203, 0.40)"], [10131.33, "rgba(79, 238, 203, 0.47)"], [11787.22, "rgba(79, 238, 203, 0.55)"], [13443.11, "rgba(79, 238, 203, 0.62)"], [15099, "rgba(79, 238, 203, 0.69)"], [22648, "rgba(79, 238, 203, 0.74)"]
     ]
 }, {
     name: 'Vulnerability ranking',
-    description: 'Estimate total GDP in millions of dollars',
+    description: '',
     property: 'Vulnerability ranking',
     stops: [
         [15.11, "rgba(79, 238, 203, 0.15)"], [29.22, "rgba(79, 238, 203, 0.2)"], [43.33, "rgba(79, 238, 203, 0.28)"], [57.44, "rgba(79, 238, 203, 0.35)"], [71.56, "rgba(79, 238, 203, 0.40)"], [85.67, "rgba(79, 238, 203, 0.47)"], [99.78, "rgba(79, 238, 203, 0.55)"], [113.89, "rgba(79, 238, 203, 0.62)"], [128, "rgba(79, 238, 203, 0.69)"], [192, "rgba(79, 238, 203, 0.74)"]
     ]
 }, {
     name: 'Avg house price',
-    description: 'Estimate total GDP in millions of dollars',
+    description: 'Avg price of appartment or house',
     property: 'Avg house price',
     stops: [
         [66836.95, "rgba(79, 238, 203, 0.15)"], [106797.11, "rgba(79, 238, 203, 0.2)"], [146757.26, "rgba(79, 238, 203, 0.28)"], [186717.42, "rgba(79, 238, 203, 0.35)"], [226677.57, "rgba(79, 238, 203, 0.40)"], [266637.73, "rgba(79, 238, 203, 0.47)"], [306597.88, "rgba(79, 238, 203, 0.55)"], [346558.04, "rgba(79, 238, 203, 0.62)"], [386518.19, "rgba(79, 238, 203, 0.69)"], [579777, "rgba(79, 238, 203, 0.74)"]
     ]
 }, {
     name: 'Avg house size (m2)',
-    description: 'Estimate total GDP in millions of dollars',
+    description: 'Avg size of houses',
     property: 'Avg house size (m2)',
     stops: [
         [20.28, "rgba(79, 238, 203, 0.15)"], [40.55, "rgba(79, 238, 203, 0.2)"], [60.83, "rgba(79, 238, 203, 0.28)"], [81.1, "rgba(79, 238, 203, 0.35)"], [101.38, "rgba(79, 238, 203, 0.40)"], [121.65, "rgba(79, 238, 203, 0.47)"], [141.93, "rgba(79, 238, 203, 0.55)"], [162.2, "rgba(79, 238, 203, 0.62)"], [182.48, "rgba(79, 238, 203, 0.69)"], [273, "rgba(79, 238, 203, 0.74)"]
     ]
 },
-
-
 ]
+
+export default options

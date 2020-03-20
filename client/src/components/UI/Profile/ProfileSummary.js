@@ -37,12 +37,14 @@ class ProfileSummary extends Component {
 
                             <Card>
                                 <Card.Img className="profile-pic" variant="top" src={imageUrl ? imageUrl : "http://getdrawings.com/free-icon/user-icon-67.png"} />
+
                                 <Card.Body>
                                     <Card.Title>{name ? name : ""} {lastName ? lastName : ""}</Card.Title>
                                     <Card.Text>
                                         {description ? description : ""}
                                     </Card.Text>
                                 </Card.Body>
+
                                 <Card.Body>
                                     <Card.Title>Activity</Card.Title>
                                     <Card.Text>
@@ -51,6 +53,7 @@ class ProfileSummary extends Component {
                                     organizations: {organizations ? organizations.length : "0"}
                                     </Card.Text>
                                 </Card.Body>
+
                                 <Card.Body>
                                     <Card.Title>Contact</Card.Title>
                                     <Card.Text>

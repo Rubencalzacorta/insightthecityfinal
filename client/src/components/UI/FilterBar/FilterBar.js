@@ -25,20 +25,17 @@ class MapFilterBar extends Component {
 
     componentDidMount = () => this.initialState()
 
+    //if there is props.state then recover previous values
     initialState = () => {
 
         this.props.state &&
-
             this.setState({
-
                 googleKWords: this.props.state.googleKWords,
                 searchPoints: this.props.state.searchPoints,
             })
 
     }
 
-
-    // this.setState({ ...this.state, searchPoints: searchResults })
     getPlaces = (keywords) => {
         this.GoogleServices.getPlaces(keywords)
             .then(searchResults => this.setState({ ...this.state, searchPoints: searchResults }))
@@ -60,9 +57,9 @@ class MapFilterBar extends Component {
         this.searchPlaces()
 
     }
+
+
     render() {
-
-
 
         return (
 

@@ -25,7 +25,7 @@ class ProfileEditForm extends Component {
     }
 
     finishAction = () => {
-        this.props.updateState(this.state.user)
+        this.props.getUser()
         this.props.closeModal()
 
     }
@@ -46,17 +46,22 @@ class ProfileEditForm extends Component {
         this.props.closeModal()
     }
 
-
     handleFileUpload = e => {
         const uploadData = new FormData()
-        uploadData.append("imageUrl", e.target.files[0])
+        for (let key in e.target.files) {
+            console.log("key", key, "files", e.target.files)
+            uploadData.append("images", e.target.files[key])
+            console.log(uploadData)
+        }
+
         this.FilesServices.handleUpload(uploadData)
             .then(response => {
-                console.log('Subida de archivo finalizada! La URL de Cloudinray es: ', response.secure_url)
-                this.setState({ user: { ...this.state.user, imageUrl: response.secure_url } })
+                console.log('Subida de archivo finalizada! La URL de Cloudinray es: ', response.secure_url[0])
+                this.setState({ ...this.state, user: { ...this.state.user, imageUrl: response.secure_url[0] } })
             })
-            .catch(err => console.log("error subiendo la foto", err))
+            .catch(err => console.log(err))
     }
+
 
     render() {
 
@@ -74,7 +79,6 @@ class ProfileEditForm extends Component {
                             <Form.Label>Image</Form.Label>
                             <Form.Control type="file" name="imageUrl" onChange={this.handleFileUpload} />
                         </Form.Group>
-
 
                         <Form.Group>
                             <Form.Label>Username</Form.Label>
@@ -118,9 +122,6 @@ class ProfileEditForm extends Component {
 
                             <hr />
                         </Form.Group>
-
-
-
 
                         <Button style={{ marginRight: 10 }} variant="outline-info" type="submit">Update profile</Button>
                         <Button variant="outline-info" type="button" onClick={this.handleClose}>Cancel</Button>

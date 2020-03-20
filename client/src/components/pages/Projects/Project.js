@@ -29,8 +29,8 @@ class Project extends Component {
         this.ProjectServices = new ProjectServices()
     }
 
-    componentDidMount = () => this.getProject()
 
+    componentDidMount = () => this.getProject()
 
     getProject = () => {
         this.ProjectServices.getProject(this.props.match.params.id)
@@ -38,19 +38,12 @@ class Project extends Component {
             .catch(err => console.log(err))
     }
 
-
     closeModal = () => this.setState({ showModal: false })
 
     openModal = () => this.setState({ showModal: true })
 
-
     updateState = state => {
         this.setState({ ...this.state, project: { ...state } })
-    }
-
-    addPictures = images => {
-        this.ProjectServices.addPictures(images)
-        this.getProject()
     }
 
     render() {
@@ -69,10 +62,14 @@ class Project extends Component {
                             <h1> {name}</h1>
                             <button onClick={this.openModal} >Edit project</button>
                         </div>
+
                         <Row >
-                            <div className="project-body">                            <Col md={12}>
-                                <ProjectInfoBox title="Proposal" content={proposal} />
-                            </Col>
+
+                            <div className="project-body">
+
+                                <Col md={12}>
+                                    <ProjectInfoBox title="Proposal" content={proposal} />
+                                </Col>
 
                                 <Col md={12}>
                                     <ProjectInfoBox title="Opportunity" content={opportunity} />
@@ -94,6 +91,7 @@ class Project extends Component {
                                         <ProjectEditForm closeModal={this.closeModal} project={this.state.project} updateState={this.updateState} />
                                     </Modal.Body>
                                 </Modal>
+
                             </div>
 
                         </Row>

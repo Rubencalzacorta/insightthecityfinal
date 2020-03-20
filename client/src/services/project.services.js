@@ -24,6 +24,8 @@ class ProjectServices {
 
     addPictures = (projectId, images) => this.service.post("/addpictures", { projectId, images }).then(response => response.data)
 
+    removePictures = (projectId, url) => this.service.post("/removepictures", { projectId, url }).then(response => response.data)
+
 
 
 }

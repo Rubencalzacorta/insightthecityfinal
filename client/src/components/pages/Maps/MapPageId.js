@@ -35,8 +35,6 @@ class MapPageId extends Component {
             zoom: 11,
             notes: [],
             searchPoints: {}
-
-
         }
         this.UserServices = new UserServices()
         this.MapServices = new MapServices()
@@ -44,12 +42,10 @@ class MapPageId extends Component {
     }
 
 
-
     componentDidMount = () => this.getMap()
 
-
+    //fetches map from database and updates state
     getMap = () => {
-
         this.MapServices.getMap(this.props.match.params.id)
             .then(theMap => {
                 this.setState({ ...theMap, creator: theMap.creator._id, updated: true })
@@ -62,21 +58,7 @@ class MapPageId extends Component {
         this.setState({ ...this.setState, ...filters, creator: this.props.loggedInUser._id })
     }
 
-    postMap = () => {
-
-        this.MapServices.postMap(this.state)
-            .then(newMap => this.UserServices.addMap(newMap))
-            .then(addedMap => {
-
-                console.log(addedMap)
-                this.props.history.push(`/maps/${addedMap._id}`)
-            })
-
-    }
-
-
     updateMap = () => {
-
         this.MapServices.updateMap(this.props.match.params.id, this.state)
             .then(updatedMap => console.log(updatedMap))
             .catch(err => console.log("error al hacer update al map"))
@@ -91,12 +73,15 @@ class MapPageId extends Component {
                 {this.state.updated ?
 
                     <Container className="map-wrapper" fluid={true}>
+
                         <Row>
 
                             {this.state.updated ? <Map postFilters={this.postFilters} state={this.state} /> : null}
 
                             <Col md={3} style={{ height: 800 }}>
+
                                 <aside className="filters-bar">
+
                                     <MapFilterBar postFilters={this.postFilters} state={this.state} />
 
                                     <NotesBar loggedInUser={this.props.loggedInUser} postFilters={this.postFilters} state={this.state} />
@@ -106,6 +91,7 @@ class MapPageId extends Component {
                                     <Link to={`/profile/${this.state.creator}`}> <button type="button" className="home-buttons map-buttons">Back to your profile</button></Link>
 
                                 </aside>
+
                             </Col>
 
                         </Row>
