@@ -18,21 +18,21 @@ https://insightthecity.herokuapp.com/
 
 ## Technologies used
 
-Javascript
-Mongo DB
-Express JS
-React JS
-Node JS
+Javascript<br/>
+Mongo DB<br/>
+Express JS<br/>
+React JS<br/>
+Node JS<br/>
 
 ## Dependencies
 
-Mongoose
-Axios
-Bootstrap for react
-React Router Dom
-Cloudinary
-Multer
-Passport
+Mongoose<br/>
+Axios<br/>
+Bootstrap for react<br/>
+React Router Dom<br/>
+Cloudinary<br/>
+Multer<br/>
+Passport<br/>
 
 ## APIs
 
@@ -41,7 +41,7 @@ Mapbox GL
 
 ## Notes
 
-Awsome that you are reading this .README, feel free to check out everything. All the information I built from the ground up, so you wont find this type of mapping anywhere else regarding Madrid. 
+Awsome that you are reading this .README, feel free to check out everything. All the information I built from the ground up, so you wont find this type of mapping anywhere else regarding Madrid. <br/><br/>
 
 To check out  a complete profile use username: rubenC password: 1234 and have a look. 
 
